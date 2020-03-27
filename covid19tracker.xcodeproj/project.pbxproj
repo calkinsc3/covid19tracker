@@ -38,6 +38,7 @@
 		94EF6296242E5253006BFB4F /* covid19trackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = covid19trackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EF629A242E5253006BFB4F /* covid19trackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = covid19trackerTests.swift; sourceTree = "<group>"; };
 		94EF629C242E5253006BFB4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94EF62A8242E5801006BFB4F /* covid19tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = covid19tracker.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +80,10 @@
 		94EF6282242E5251006BFB4F /* covid19tracker */ = {
 			isa = PBXGroup;
 			children = (
-				94EF6283242E5251006BFB4F /* AppDelegate.swift */,
-				94EF6285242E5251006BFB4F /* SceneDelegate.swift */,
-				94EF6287242E5251006BFB4F /* ContentView.swift */,
-				94EF6289242E5253006BFB4F /* Assets.xcassets */,
-				94EF628E242E5253006BFB4F /* LaunchScreen.storyboard */,
-				94EF6291242E5253006BFB4F /* Info.plist */,
+				94EF62A8242E5801006BFB4F /* covid19tracker.entitlements */,
+				94EF62A5242E55DC006BFB4F /* System */,
+				94EF62A6242E55F1006BFB4F /* UI */,
+				94EF62A7242E560A006BFB4F /* Resources */,
 				94EF628B242E5253006BFB4F /* Preview Content */,
 			);
 			path = covid19tracker;
@@ -105,6 +104,33 @@
 				94EF629C242E5253006BFB4F /* Info.plist */,
 			);
 			path = covid19trackerTests;
+			sourceTree = "<group>";
+		};
+		94EF62A5242E55DC006BFB4F /* System */ = {
+			isa = PBXGroup;
+			children = (
+				94EF6283242E5251006BFB4F /* AppDelegate.swift */,
+				94EF6285242E5251006BFB4F /* SceneDelegate.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		94EF62A6242E55F1006BFB4F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				94EF6287242E5251006BFB4F /* ContentView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		94EF62A7242E560A006BFB4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				94EF6291242E5253006BFB4F /* Info.plist */,
+				94EF6289242E5253006BFB4F /* Assets.xcassets */,
+				94EF628E242E5253006BFB4F /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,17 +388,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = covid19tracker/covid19tracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"covid19tracker/Preview Content\"";
 				DEVELOPMENT_TEAM = GAW47D4MAE;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = covid19tracker/Info.plist;
+				INFOPLIST_FILE = covid19tracker/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.c3.covid19tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -382,17 +412,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = covid19tracker/covid19tracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"covid19tracker/Preview Content\"";
 				DEVELOPMENT_TEAM = GAW47D4MAE;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = covid19tracker/Info.plist;
+				INFOPLIST_FILE = covid19tracker/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.c3.covid19tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
