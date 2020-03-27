@@ -17,6 +17,11 @@
 		94EF62AB242E5F43006BFB4F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF62AA242E5F43006BFB4F /* Models.swift */; };
 		94EF62AE242E61D2006BFB4F /* StateMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 94EF62AD242E61D2006BFB4F /* StateMock.json */; };
 		94EF62B1242E641E006BFB4F /* FileSystemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF62B0242E641E006BFB4F /* FileSystemExtensions.swift */; };
+		94EF62B4242E7DED006BFB4F /* StateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF62B3242E7DED006BFB4F /* StateViewModel.swift */; };
+		94EF62B7242E8125006BFB4F /* StateFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF62B6242E8125006BFB4F /* StateFetcher.swift */; };
+		94EF62BA242E8232006BFB4F /* ErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF62B9242E8232006BFB4F /* ErrorConstants.swift */; };
+		94EF62BC242E8C2C006BFB4F /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF62BB242E8C2C006BFB4F /* Parsing.swift */; };
+		94EF62BE242E8FEE006BFB4F /* StatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF62BD242E8FEE006BFB4F /* StatesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,11 @@
 		94EF62AA242E5F43006BFB4F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		94EF62AD242E61D2006BFB4F /* StateMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StateMock.json; sourceTree = "<group>"; };
 		94EF62B0242E641E006BFB4F /* FileSystemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemExtensions.swift; sourceTree = "<group>"; };
+		94EF62B3242E7DED006BFB4F /* StateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateViewModel.swift; sourceTree = "<group>"; };
+		94EF62B6242E8125006BFB4F /* StateFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateFetcher.swift; sourceTree = "<group>"; };
+		94EF62B9242E8232006BFB4F /* ErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorConstants.swift; sourceTree = "<group>"; };
+		94EF62BB242E8C2C006BFB4F /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
+		94EF62BD242E8FEE006BFB4F /* StatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,10 +99,12 @@
 				94EF62A8242E5801006BFB4F /* covid19tracker.entitlements */,
 				94EF62A5242E55DC006BFB4F /* System */,
 				94EF62A6242E55F1006BFB4F /* UI */,
+				94EF62B5242E7DF7006BFB4F /* ViewModel */,
 				94EF62A9242E5F1F006BFB4F /* Models */,
 				94EF62A7242E560A006BFB4F /* Resources */,
 				94EF628B242E5253006BFB4F /* Preview Content */,
 				94EF62B2242E6426006BFB4F /* Utilities */,
+				94EF62B8242E812F006BFB4F /* Fetchers */,
 			);
 			path = covid19tracker;
 			sourceTree = "<group>";
@@ -128,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				94EF6287242E5251006BFB4F /* ContentView.swift */,
+				94EF62BD242E8FEE006BFB4F /* StatesView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -170,8 +183,26 @@
 			isa = PBXGroup;
 			children = (
 				94EF62B0242E641E006BFB4F /* FileSystemExtensions.swift */,
+				94EF62B9242E8232006BFB4F /* ErrorConstants.swift */,
+				94EF62BB242E8C2C006BFB4F /* Parsing.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		94EF62B5242E7DF7006BFB4F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				94EF62B3242E7DED006BFB4F /* StateViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		94EF62B8242E812F006BFB4F /* Fetchers */ = {
+			isa = PBXGroup;
+			children = (
+				94EF62B6242E8125006BFB4F /* StateFetcher.swift */,
+			);
+			path = Fetchers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,10 +307,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94EF62B4242E7DED006BFB4F /* StateViewModel.swift in Sources */,
+				94EF62BC242E8C2C006BFB4F /* Parsing.swift in Sources */,
+				94EF62BE242E8FEE006BFB4F /* StatesView.swift in Sources */,
 				94EF6284242E5251006BFB4F /* AppDelegate.swift in Sources */,
 				94EF6286242E5251006BFB4F /* SceneDelegate.swift in Sources */,
+				94EF62B7242E8125006BFB4F /* StateFetcher.swift in Sources */,
 				94EF62AB242E5F43006BFB4F /* Models.swift in Sources */,
 				94EF6288242E5251006BFB4F /* ContentView.swift in Sources */,
+				94EF62BA242E8232006BFB4F /* ErrorConstants.swift in Sources */,
 				94EF62B1242E641E006BFB4F /* FileSystemExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

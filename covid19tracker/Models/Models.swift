@@ -7,22 +7,23 @@
 //
 
 import Foundation
-
+import Combine
 
 typealias StateModels = [StateData]
 
 // MARK: - StateDatum
-struct StateData: Codable {
+struct StateData: Codable, Identifiable {
+    let id = UUID()
     let state: String
-    let positive: Int
+    let positive: Int?
     let positiveScore, negativeScore, negativeRegularScore, commercialScore: Int?
     let grade: Grade?
     let score: Int?
     let negative, pending, hospitalized, death: Int?
     let total: Int
-    let lastUpdateEt, checkTimeEt: String
-    let dateModified, dateChecked: Date
-    let notes: String
+    let lastUpdateEt, checkTimeEt: String?
+    let dateModified, dateChecked: String?
+    let notes: String?
     let totalTestResults: Int
 }
 
