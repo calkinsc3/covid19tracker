@@ -25,6 +25,12 @@ struct StateData: Codable, Identifiable {
     let dateModified, dateChecked: String?
     let notes: String?
     let totalTestResults: Int
+    
+    var stateName: String? {
+        unitedStates[self.state]
+    }
+    
+    static let `placeholder` = Self(state: "WI", positive: 707, positiveScore: 1, negativeScore: 1, negativeRegularScore: 1, commercialScore: 1, grade: .a, score: 4, negative: 11583, pending: nil, hospitalized: nil, death: 8, total: 12290, lastUpdateEt: "3/26 16:00", checkTimeEt: "3/26 15:54", dateModified: "2020-03-26T20:00:00Z", dateChecked: "2020-03-26T19:45:00Z", notes: "Please stop using the \"total\" field. Use \"totalTestResults\" instead.", totalTestResults: 12290)
 }
 
 enum Grade: String, Codable {

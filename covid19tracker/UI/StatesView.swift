@@ -15,11 +15,15 @@ struct StatesView: View {
     var body: some View {
         NavigationView {
             List(self.statesViewModel.stateResults) { state in
-                StateCellView(state: state)
+                NavigationLink(destination: StateDetailView(givenState: state)) {
+                    StateCellView(state: state)
+                }
             }
             .navigationBarTitle("States")
         }
-        
+        .onAppear {
+            self.statesViewModel.fetchStatesResults()
+        }
     }
 }
 
@@ -28,10 +32,17 @@ struct StateCellView: View {
     let state: StateData
     
     var body: some View {
-        HStack {
-            Text(state.state)
-            Text(String(state.positive ?? 0))
-            Text(String(state.death ?? 0))
+        VStack {
+            Text(state.stateName ?? "")
+                .font(.title)
+            Spacer()
+            HStack {
+                Text("Positive: \(String(state.positive ?? 0))")
+                    .font(.body)
+                Spacer()
+                Text("Deaths: \(String(state.death ?? 0))")
+                    .font(.body)
+            }
         }
     }
 }
