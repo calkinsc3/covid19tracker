@@ -21,9 +21,6 @@ struct StatesView: View {
             }
             .navigationBarTitle("States")
         }
-        .onAppear {
-            self.statesViewModel.fetchStatesResults()
-        }
     }
 }
 
@@ -35,11 +32,12 @@ struct StateCellView: View {
         VStack {
             Text(state.stateName ?? "")
                 .font(.title)
-            Spacer()
+            Text("Updated: \(state.asOfDate ?? "")")
+                               .font(.body)
             HStack {
                 Text("Positive: \(String(state.positive ?? 0))")
                     .font(.body)
-                Spacer()
+               
                 Text("Deaths: \(String(state.death ?? 0))")
                     .font(.body)
             }

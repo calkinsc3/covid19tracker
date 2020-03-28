@@ -19,10 +19,10 @@ class StatesViewModel: ObservableObject {
     private var disposable = Set<AnyCancellable>()
     
     init() {
-       // self.fetchStatesResults()
+       self.fetchStatesResults()
     }
     
-    func fetchStatesResults() {
+    private func fetchStatesResults() {
         
         //clear existing data
         //if !self.stateResults.isEmpty { self.stateResults.removeAll() }
