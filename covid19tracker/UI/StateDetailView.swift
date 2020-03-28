@@ -13,7 +13,15 @@ struct StateDetailView: View {
     @State var givenState: StateData
     
     var body: some View {
-        Text(givenState.stateName ?? "")
+        VStack {
+            Text(givenState.stateName ?? "")
+                .font(.title)
+            Text("Last Update: \(givenState.asOfDate ?? "")")
+            Divider()
+            Text("Negative: \(givenState.negative ?? 0)")
+            Text("Positive: \(givenState.positive ?? 0)")
+            Text("Total: \(givenState.totalTestResults)")
+        }
     }
 }
 
