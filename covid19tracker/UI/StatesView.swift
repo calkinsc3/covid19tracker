@@ -13,9 +13,13 @@ struct StatesView: View {
     @ObservedObject var statesViewModel = StatesViewModel()
     
     var body: some View {
-        List(self.statesViewModel.stateResults) { state in
-            StateCellView(state: state)
+        NavigationView {
+            List(self.statesViewModel.stateResults) { state in
+                StateCellView(state: state)
+            }
+            .navigationBarTitle("States")
         }
+        
     }
 }
 
