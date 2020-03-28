@@ -39,7 +39,24 @@ struct StateData: Codable, Identifiable {
         }
         
         return dateformatter.string(from: isoDate)
-        
+    }
+    
+    var formattedPositive: String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value: self.positive ?? 0))
+    }
+    
+    var formattedNegative: String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value:self.negative ?? 0))
+    }
+    
+    var forattedDeath: String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value:self.death ?? 0))
     }
     
     static let `placeholder` = Self(state: "WI", positive: 707, positiveScore: 1, negativeScore: 1, negativeRegularScore: 1, commercialScore: 1, grade: .a, score: 4, negative: 11583, pending: nil, hospitalized: nil, death: 8, total: 12290, lastUpdateEt: "3/26 16:00", checkTimeEt: "3/26 15:54", dateModified: "2020-03-27T23:00:00Z", dateChecked: "2020-03-28T12:42:00Z", notes: "Please stop using the \"total\" field. Use \"totalTestResults\" instead.", totalTestResults: 12290)

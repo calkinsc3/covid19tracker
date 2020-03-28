@@ -14,14 +14,16 @@ struct StateDetailView: View {
     
     var body: some View {
         VStack {
-            Text(givenState.stateName ?? "")
-                .font(.title)
             Text("Last Update: \(givenState.asOfDate ?? "")")
             Divider()
             Text("Negative: \(givenState.negative ?? 0)")
             Text("Positive: \(givenState.positive ?? 0)")
             Text("Total: \(givenState.totalTestResults)")
+            Divider()
+            Text("Deaths: \(givenState.death ?? 0)")
+            Spacer()
         }
+        .navigationBarTitle(givenState.stateName ?? "")
     }
 }
 
