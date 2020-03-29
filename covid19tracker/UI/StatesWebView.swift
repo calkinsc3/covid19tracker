@@ -11,7 +11,7 @@ import WebKit
 
 struct StatesWebView: UIViewRepresentable {
     
-    let stateInfo: StateInfoElement
+    let urlRequest: URLRequest?
     
     func makeCoordinator() -> StatesWebView.Coordinator {
         return Coordinator(self)
@@ -25,7 +25,10 @@ struct StatesWebView: UIViewRepresentable {
     }
     
     func updateUIView(_ webView: WKWebView, context: Context) {
-        webView.load(stateInfo.urlRequest!)
+        if let givenURLRequest = self.urlRequest {
+            webView.load(givenURLRequest)
+        }
+            
     }
     
     //MARK:- WebDelegate Coordinator
@@ -64,8 +67,8 @@ struct StatesWebView: UIViewRepresentable {
     }
 }
 
-struct StatesWebView_Previews: PreviewProvider {
-    static var previews: some View {
-        StatesWebView(stateInfo: StateInfoElement.placeholder)
-    }
-}
+//struct StatesWebView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StatesWebView(stateInfo: StateInfoElement.placeholder)
+//    }
+//}

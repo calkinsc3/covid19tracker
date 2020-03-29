@@ -37,7 +37,7 @@ struct ContentView: View {
             .tag(1)
             
             //MARK:- Vids
-            Text("Press")
+            StatePressView()
                 .font(.title)
                 .tabItem {
                     VStack {

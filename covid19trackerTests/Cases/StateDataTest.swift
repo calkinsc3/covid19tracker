@@ -15,6 +15,7 @@ class StateDataTests: XCTestCase {
     
     private var stateData: Data?
     private var stateInfoData: Data?
+    private var statePressData: Data?
     
     override func setUpWithError() throws {
 
@@ -73,8 +74,28 @@ class StateDataTests: XCTestCase {
             }
         }
         
+    }
+    
+    func testPressInfo() throws {
+        
+        self.statePressData = self.getMockData(forResource: "PressInfo")
+        
+        //Decode State Press Data
+        if let givenPressInfoData = self.statePressData {
+            do {
+                let statePressInfo = try self.jsonDecoder.decode(PressData.self, from: givenPressInfoData)
+                XCTAssertTrue(statePressInfo.count == 60, "State Press count should be 100. Count is \(statePressInfo.count)")
+                
+            } catch {
+                XCTFail("Failed to decode Press info data: \(error)")
+            }
+            
+        }
+            
         
     }
+    
+    
     
     //MARK:- Helper Functions
     private func createPath(forJSONFile: String) -> URL {

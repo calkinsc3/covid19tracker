@@ -68,13 +68,14 @@ enum Grade: String, Codable {
 //MARK:- Press
 typealias PressData = [PressDatum]
 
-struct PressDatum: Codable {
+struct PressDatum: Codable, Identifiable {
+    let id = UUID()
     let title: String
     let url: String
     let addToCovidTrackingProjectWebsite, featureOnCovidTrackingProjectHomepage, aboutCovidTrackingProject: Bool?
     let publishDate: String
     let continuallyUpdated: Bool?
-    let publication: String
+    let publication: String?
     let author: String?
     let doesThisSourceHaveADataVisualization: Bool?
     let dataSource: String?
@@ -82,6 +83,20 @@ struct PressDatum: Codable {
     let linkToVizImage: String?
     let twitterCopy: String?
     let language: Language?
+    
+    var datePublished: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/YYYY"
+        
+        return dateFormatter.date(from: self.publishDate)
+    }
+    
+    var urlRequest: URLRequest? {
+        guard let url = URL(string: self.url) else {
+            return nil
+        }
+        return URLRequest(url: url)
+    }
 }
 
 enum Language: String, Codable {
@@ -117,7 +132,3 @@ struct StateInfoElement: Codable, Identifiable {
     
     static let `placeholder` = Self(kind: "url", name: "Ohio", url: "https://coronavirus.ohio.gov/wps/portal/gov/covid-19/", stateId: "OH", filter: nil)
 }
-
-
-
-

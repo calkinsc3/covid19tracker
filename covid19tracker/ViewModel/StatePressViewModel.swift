@@ -1,5 +1,5 @@
 //
-//  StateInfoViewModel.swift
+//  StatePressViewModel.swift
 //  covid19tracker
 //
 //  Created by William Calkins on 3/29/20.
@@ -11,22 +11,21 @@ import SwiftUI
 import Combine
 import os
 
-
-//StateInfo ViewModel
-class StateInfoViewModel: ObservableObject {
+//MARK:- State Press ViewModel
+class StatePressViewModel: ObservableObject {
     
-    @Published var stateInfo : StateInfo = []
+    @Published var statePressResult: PressData = []
     
-    private let stateInfoFetcher = StateItemsFetcher()
+    private let statePressFether = StateItemsFetcher()
     private var disposable = Set<AnyCancellable>()
     
     init() {
-        self.fetchStateInfoResults()
+        self.fetchStatePressResults()
     }
     
-    private func fetchStateInfoResults() {
+    private func fetchStatePressResults() {
         
-        stateInfoFetcher.stateInfoItems()
+        statePressFether.statePressItems()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 
@@ -34,22 +33,20 @@ class StateInfoViewModel: ObservableObject {
                 case .failure(let stateItemError):
                     switch stateItemError as StatePublishError {
                     case .decoding(let decodingError):
-                        os_log("Decoding error in fetchStateInfoResults error: %s", log: Log.subscriberLogger, type: .error, decodingError)
+                        os_log("Decoding error in fetchStatePressResults error: %s", log: Log.subscriberLogger, type: .error, decodingError)
                     case .network(let networkingError):
-                        os_log("Networking error in fetchStateInfoResults error: %s", log: Log.subscriberLogger, type: .error, networkingError)
+                        os_log("Networking error in fetchStatePressResults error: %s", log: Log.subscriberLogger, type: .error, networkingError)
                     case .apiError(let apiError) :
                         os_log("API error in StateDataFetcher received in subscriber: %s", log: Log.subscriberLogger, type: .error, apiError)
                     }
                 case .finished:
                     break
                 }
-            }, receiveValue: { [weak self] stateModels in
+            }, receiveValue: { [weak self] statePressModels in
                 guard let self = self else { return }
-                self.stateInfo = stateModels.sorted(by:{$0.name < $1.name})
+                self.statePressResult = statePressModels.sorted(by:{$0.datePublished ?? Date() > $1.datePublished ?? Date()})
             })
             .store(in: &disposable)
-        
     }
     
 }
-

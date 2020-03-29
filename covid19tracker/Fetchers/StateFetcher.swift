@@ -11,10 +11,12 @@ import Combine
 
 typealias StatePublisher = AnyPublisher<StateModels, StatePublishError>
 typealias StateInfoPublisher = AnyPublisher<StateInfo, StatePublishError>
+typealias StatePressPublisher = AnyPublisher<PressData, StatePublishError>
 
 protocol StateFetchable {
     func stateItems() -> StatePublisher
     func stateInfoItems() -> StateInfoPublisher
+    func statePressItems() -> StatePressPublisher
 }
 
 //MARK: - StateItemsFetcher
@@ -36,6 +38,10 @@ extension StateItemsFetcher : StateFetchable {
     
     func stateInfoItems() -> StateInfoPublisher {
         return self.stateItems(with: self.makeCOVIDStateInfoComponents())
+    }
+    
+    func statePressItems() -> StatePressPublisher {
+        return self.stateItems(with: self.makeCOVIDPressComponents())
     }
     
     //MARK:- State Publisher
@@ -66,6 +72,7 @@ private extension StateItemsFetcher {
         static let host = "covidtracking.com"
         static let path = "/api/states"
         static let infoPath = "/api/urls"
+        static let pressPath = "/api/press"
     }
     
     func makeCOVIDStateComponents() -> URLComponents {
@@ -86,6 +93,17 @@ private extension StateItemsFetcher {
         components.scheme = COVID19_API.schema
         components.host = COVID19_API.host
         components.path = COVID19_API.infoPath
+        
+        return components
+    }
+    
+    func makeCOVIDPressComponents() -> URLComponents {
+        
+        var components = URLComponents()
+        
+        components.scheme = COVID19_API.schema
+        components.host = COVID19_API.host
+        components.path = COVID19_API.pressPath
         
         return components
     }

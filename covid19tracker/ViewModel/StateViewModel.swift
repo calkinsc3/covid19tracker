@@ -33,9 +33,9 @@ class StatesViewModel: ObservableObject {
                 case .failure(let stateItemError):
                     switch stateItemError as StatePublishError {
                     case .decoding(let decodingError):
-                        os_log("Decoding error in fetchProducts error: %s", log: Log.subscriberLogger, type: .error, decodingError)
+                        os_log("Decoding error in fetchStatesResults error: %s", log: Log.subscriberLogger, type: .error, decodingError)
                     case .network(let networkingError):
-                        os_log("Networking error in fetchProducts error: %s", log: Log.subscriberLogger, type: .error, networkingError)
+                        os_log("Networking error in fetchStatesResults error: %s", log: Log.subscriberLogger, type: .error, networkingError)
                     case .apiError(let apiError) :
                         os_log("API error in StateDataFetcher received in subscriber: %s", log: Log.subscriberLogger, type: .error, apiError)
                     }
