@@ -65,4 +65,49 @@ enum Grade: String, Codable {
     case d = "D"
 }
 
+//MARK:- Press
+typealias PressData = [PressDatum]
+
+struct PressDatum: Codable {
+    let title: String
+    let url: String
+    let addToCovidTrackingProjectWebsite, featureOnCovidTrackingProjectHomepage, aboutCovidTrackingProject: Bool?
+    let publishDate: String
+    let continuallyUpdated: Bool?
+    let publication: String
+    let author: String?
+    let doesThisSourceHaveADataVisualization: Bool?
+    let dataSource: String?
+    let usesCovidTrackingData: UsesCovidTrackingData?
+    let linkToVizImage: String?
+    let twitterCopy: String?
+    let language: Language?
+}
+
+enum Language: String, Codable {
+    case en = "EN"
+    case es = "ES"
+    case fr = "FR"
+    case it = "IT"
+    case pt = "PT"
+}
+
+enum UsesCovidTrackingData: String, Codable {
+    case no = "no"
+    case usesCovidTrackingDataYes = "Yes"
+    case yes = "yes"
+}
+
+// MARK: - StateInfoElement
+typealias StateInfo = [StateInfoElement]
+
+struct StateInfoElement: Codable {
+    let kind: String
+    let name: String
+    let url: URL
+    let stateId, filter: String?
+}
+
+
+
 

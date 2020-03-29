@@ -26,23 +26,23 @@ struct ContentView: View {
             .tag(0)
             
             //MARK:- Info View
-            Text("Info")
+            Text("State Info")
                 .font(.title)
                 .tabItem {
                     VStack {
                         Image(systemName: "info.circle")
-                        Text("Info")
+                        Text("State Info")
                     }
             }
             .tag(1)
             
             //MARK:- Vids
-            Text("Vids")
+            Text("Press")
                 .font(.title)
                 .tabItem {
                     VStack {
-                        Image(systemName: "video")
-                        Text("Vids")
+                        Image(systemName: "tray.and.arrow.down")
+                        Text("Press")
                     }
             }
             .tag(2)
