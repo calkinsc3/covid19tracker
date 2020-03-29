@@ -13,7 +13,8 @@ class StateDataTests: XCTestCase {
     
     let jsonDecoder = JSONDecoder()
     
-    var stateData: Data?
+    private var stateData: Data?
+    private var stateInfoData: Data?
     
     override func setUpWithError() throws {
 
@@ -26,7 +27,7 @@ class StateDataTests: XCTestCase {
     func testStateData() throws {
         
         self.stateData = self.getMockData(forResource: "StateMock")
-        XCTAssertNotNil(self.stateData)
+        XCTAssertNotNil(self.stateData, "State mock did not load")
         
         //Decode State Data
         if let givenStateData = self.stateData {
@@ -45,6 +46,33 @@ class StateDataTests: XCTestCase {
                 XCTFail("Failed to decode State data: \(error)")
             }
         }
+        
+    }
+    
+    func testStateInfo() throws {
+        
+        self.stateInfoData = self.getMockData(forResource: "StateInfo")
+        XCTAssertNotNil(self.stateInfoData, "State Info mock did not load")
+        
+        //Decode State Info Data
+        if let givenStateInfoData = self.stateInfoData {
+            do {
+                
+                let stateInfoModel = try self.jsonDecoder.decode(StateInfo.self, from: givenStateInfoData)
+                XCTAssertTrue(stateInfoModel.count == 56, "State info count should be 50. Count is \(stateInfoModel.count)")
+                
+                if let akStateInfo = stateInfoModel.first {
+                    XCTAssertTrue(akStateInfo.kind == "url", "akStateInfo.kind should be url")
+                    XCTAssertTrue(akStateInfo.name == "Alaska", "akStateInfo.name should be Alaska")
+                    XCTAssertTrue(akStateInfo.stateId == "AK", "akStateInfo.stateId should be AK")
+                }
+                
+                
+            } catch  {
+                XCTFail("Failed to decode State Info data: \(error)")
+            }
+        }
+        
         
     }
     

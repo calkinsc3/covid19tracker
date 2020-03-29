@@ -1,8 +1,8 @@
 //
-//  StateViewModel.swift
+//  StateInfoViewModel.swift
 //  covid19tracker
 //
-//  Created by William Calkins on 3/27/20.
+//  Created by William Calkins on 3/29/20.
 //  Copyright © 2020 Calkins Computer Consulting. All rights reserved.
 //
 
@@ -11,21 +11,22 @@ import SwiftUI
 import Combine
 import os
 
-//MARK:- States ViewModel
-class StatesViewModel: ObservableObject {
+
+//StateInfo ViewModel
+class StateInfoViewModel: ObservableObject {
     
-    @Published var stateResults : StateModels = []
+    @Published var stateInfo : StateInfo = []
     
-    private let stateFetcher = StateItemsFetcher()
+    private let stateInfoFetcher = StateItemsFetcher()
     private var disposable = Set<AnyCancellable>()
     
     init() {
-       self.fetchStatesResults()
+        self.fetchStateInfoResults()
     }
     
-    private func fetchStatesResults() {
+    private func fetchStateInfoResults() {
         
-        stateFetcher.stateItems()
+        stateInfoFetcher.stateInfoItems()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 
@@ -44,11 +45,11 @@ class StatesViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] stateModels in
                 guard let self = self else { return }
-                self.stateResults = stateModels.sorted(by:{$0.positive ?? 0 > $1.positive ?? 0})
+                self.stateInfo = stateModels.sorted(by:{$0.name < $1.name})
             })
             .store(in: &disposable)
         
     }
     
-    
 }
+

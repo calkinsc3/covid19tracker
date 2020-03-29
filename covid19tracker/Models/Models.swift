@@ -101,11 +101,21 @@ enum UsesCovidTrackingData: String, Codable {
 // MARK: - StateInfoElement
 typealias StateInfo = [StateInfoElement]
 
-struct StateInfoElement: Codable {
+struct StateInfoElement: Codable, Identifiable {
+    let id = UUID()
     let kind: String
     let name: String
-    let url: URL
+    let url: String
     let stateId, filter: String?
+    
+    var urlRequest: URLRequest? {
+        guard let url = URL(string: self.url) else {
+            return nil
+        }
+        return URLRequest(url: url)
+    }
+    
+    static let `placeholder` = Self(kind: "url", name: "Ohio", url: "https://coronavirus.ohio.gov/wps/portal/gov/covid-19/", stateId: "OH", filter: nil)
 }
 
 

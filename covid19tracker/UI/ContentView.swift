@@ -26,7 +26,7 @@ struct ContentView: View {
             .tag(0)
             
             //MARK:- Info View
-            Text("State Info")
+            StateInfoView()
                 .font(.title)
                 .tabItem {
                     VStack {
