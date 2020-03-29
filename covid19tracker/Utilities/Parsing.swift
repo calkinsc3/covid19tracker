@@ -12,6 +12,7 @@ import Combine
 func decode<T: Decodable>(_ data: Data) -> AnyPublisher<T, StatePublishError> {
     
     let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .iso8601
     
     return Just(data)
         .decode(type: T.self, decoder: decoder)

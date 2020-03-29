@@ -22,7 +22,7 @@ struct StateData: Codable, Identifiable {
     let negative, pending, hospitalized, death: Int?
     let total: Int
     let lastUpdateEt, checkTimeEt: String?
-    let dateModified, dateChecked: String?
+    let dateModified, dateChecked: Date?
     let notes: String?
     let totalTestResults: Int
     
@@ -31,14 +31,10 @@ struct StateData: Codable, Identifiable {
     }
     
     var asOfDate: String? {
-        let dateformatter = ISO8601DateFormatter()
-        dateformatter.formatOptions = [.withFullDate]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/YYYY"
         
-        guard let isoDate = dateformatter.date(from: self.dateModified ?? "") else {
-            return nil
-        }
-        
-        return dateformatter.string(from: isoDate)
+        return dateFormatter.string(from: self.dateModified ?? Date())
     }
     
     var formattedPositive: String? {
@@ -59,7 +55,7 @@ struct StateData: Codable, Identifiable {
         return numberFormatter.string(from: NSNumber(value:self.death ?? 0))
     }
     
-    static let `placeholder` = Self(state: "WI", positive: 707, positiveScore: 1, negativeScore: 1, negativeRegularScore: 1, commercialScore: 1, grade: .a, score: 4, negative: 11583, pending: nil, hospitalized: nil, death: 8, total: 12290, lastUpdateEt: "3/26 16:00", checkTimeEt: "3/26 15:54", dateModified: "2020-03-27T23:00:00Z", dateChecked: "2020-03-28T12:42:00Z", notes: "Please stop using the \"total\" field. Use \"totalTestResults\" instead.", totalTestResults: 12290)
+    static let `placeholder` = Self(state: "WI", positive: 707, positiveScore: 1, negativeScore: 1, negativeRegularScore: 1, commercialScore: 1, grade: .a, score: 4, negative: 11583, pending: nil, hospitalized: nil, death: 8, total: 12290, lastUpdateEt: "3/26 16:00", checkTimeEt: "3/26 15:54", dateModified: Date(), dateChecked: Date(), notes: "Please stop using the \"total\" field. Use \"totalTestResults\" instead.", totalTestResults: 12290)
 }
 
 enum Grade: String, Codable {

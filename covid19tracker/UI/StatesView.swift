@@ -17,6 +17,9 @@ struct StatesView: View {
     var sortingActionSheet: ActionSheet {
         ActionSheet(title: Text("Sort By"),
                     message: Text("How would you like to sort the States?"), buttons: [
+                        .default(Text("Most Recent"), action: {
+                            self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.dateModified ?? Date() > $1.dateModified ?? Date()})
+                        }),
                         .default(Text("Positive Tests"), action: {
                             self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.positive ?? 0 > $1.positive ?? 0})
                         }),
@@ -80,6 +83,10 @@ struct StateCellView: View {
 
 struct StatesView_Previews: PreviewProvider {
     static var previews: some View {
-        StatesView()
+        Group {
+            StatesView()
+            StateCellView(state: StateData.placeholder)
+        }
+        
     }
 }
