@@ -9,10 +9,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection = 0
+    
+    @State private var selectedTab = 0
     
     var body: some View {
-        TabView(selection: $selection){
+        TabView(selection: $selectedTab){
+            //MARK:- StateView
             StatesView()
                 .font(.title)
                 .tabItem {
@@ -21,7 +23,9 @@ struct ContentView: View {
                         Text("Numbers")
                     }
             }
+            .tag(0)
             
+            //MARK:- Info View
             Text("Info")
                 .font(.title)
                 .tabItem {
@@ -32,6 +36,7 @@ struct ContentView: View {
             }
             .tag(1)
             
+            //MARK:- Vids
             Text("Vids")
                 .font(.title)
                 .tabItem {
@@ -39,8 +44,8 @@ struct ContentView: View {
                         Image(systemName: "video")
                         Text("Vids")
                     }
-                    .tag(2)
             }
+            .tag(2)
         }
     }
 }
