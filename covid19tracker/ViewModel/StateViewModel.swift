@@ -15,6 +15,7 @@ import os
 class StatesViewModel: ObservableObject {
     
     @Published var stateResults : StateModels = []
+    @Published var showFavoritesOnly = false
     
     private let stateFetcher = StateItemsFetcher()
     private var disposable = Set<AnyCancellable>()

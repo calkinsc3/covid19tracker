@@ -17,9 +17,10 @@ struct StatePressView: View {
             List(self.statePressViewModel.statePressResult) { press in
                 NavigationLink(destination: StatesWebView(urlRequest: press.urlRequest)) {
                     StatePressCellView(statePressInfo: press)
+                        .padding()
                 }
             }
-        .navigationBarTitle("Press")
+            .navigationBarTitle("Press")
         }
     }
 }
@@ -31,10 +32,11 @@ struct StatePressCellView: View {
     var body: some View {
         VStack {
             Text(self.statePressInfo.title)
-                .font(.title)
-            Text("Published Date: \(statePressInfo.publishDate)")
+                .font(.body)
+            Text("Published Date: \(statePressInfo.datePublishedDisplay ?? statePressInfo.publishDate)")
                 .font(.caption)
         }
+        .multilineTextAlignment(.leading)
     }
 }
 

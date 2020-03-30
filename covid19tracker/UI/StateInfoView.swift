@@ -12,14 +12,25 @@ struct StateInfoView: View {
     
     @ObservedObject var statesInfoViewModel = StateInfoViewModel()
     
+    @State var showFavoritesOnly = false
+    
     var body: some View {
         NavigationView {
-            List(self.statesInfoViewModel.stateInfo) { stateInfo in
-                NavigationLink(destination: StatesWebView(urlRequest: stateInfo.urlRequest), label: {
-                    StateInfoCellView(stateInfo: stateInfo)
-                })
-                .navigationBarTitle("State Source")
+            
+            VStack {
+                Toggle(isOn: $showFavoritesOnly) {
+                    Text("Favorites Only")
+                }
+                .padding()
+                
+                List(self.statesInfoViewModel.stateInfo) { stateInfo in
+                    NavigationLink(destination: StatesWebView(urlRequest: stateInfo.urlRequest), label: {
+                        StateInfoCellView(stateInfo: stateInfo)
+                    })
+                    .navigationBarTitle("State Source")
+                }
             }
+            
         }
     }
 }

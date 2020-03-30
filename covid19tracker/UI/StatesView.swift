@@ -13,6 +13,7 @@ struct StatesView: View {
     @ObservedObject var statesViewModel = StatesViewModel()
     
     @State var showingSortSheet = false
+    @State var showFavoritesOnly = false
     
     var sortingActionSheet: ActionSheet {
         ActionSheet(title: Text("Sort By"),
@@ -46,16 +47,26 @@ struct StatesView: View {
     
     var body: some View {
         NavigationView {
-            List(self.statesViewModel.stateResults) { state in
-                NavigationLink(destination: StateDetailView(givenState: state)) {
-                    StateCellView(state: state)
+            VStack {
+                Toggle(isOn: $showFavoritesOnly) {
+                    Text("Favorites Only")
+                }
+                .padding()
+                
+                List(self.statesViewModel.stateResults) { state in
+                    if !self.showFavoritesOnly || (state.isFavorite ?? false) {
+                        NavigationLink(destination: StateDetailView(givenState: state)) {
+                            StateCellView(state: state)
+                        }
+                    }
+                }
+                .navigationBarTitle("States")
+                .navigationBarItems(trailing: self.sortActionSheetButton)
+                .actionSheet(isPresented: $showingSortSheet) {
+                    self.sortingActionSheet
                 }
             }
-            .navigationBarTitle("States")
-            .navigationBarItems(trailing: self.sortActionSheetButton)
-            .actionSheet(isPresented: $showingSortSheet) {
-                self.sortingActionSheet
-            }
+            
         }
     }
 }
@@ -63,21 +74,32 @@ struct StatesView: View {
 struct StateCellView: View {
     
     let state: StateData
+    @State private var favorite = false
     
     var body: some View {
-        VStack {
-            Text(state.stateName ?? "")
-                .font(.title)
-            Text("Updated: \(state.asOfDate ?? "")")
-                .font(.body)
-            HStack {
-                Text("Positive: \(String(state.formattedPositive ?? "0"))")
+        
+        HStack {
+            VStack {
+                Text(state.stateName ?? "")
+                    .font(.title)
+                Text("Updated: \(state.asOfDate ?? "")")
                     .font(.body)
-                
-                Text("Deaths: \(String(state.forattedDeath ?? "0"))")
-                    .font(.body)
+                HStack {
+                    Text("Positive: \(String(state.formattedPositive ?? "0"))")
+                        .font(.body)
+                    
+                    Text("Deaths: \(String(state.forattedDeath ?? "0"))")
+                        .font(.body)
+                }
             }
+            if state.isFavorite ?? false {
+                Image(systemName: "star.fill")
+                    .imageScale(.medium)
+                    .foregroundColor(.yellow)
+            }
+            
         }
+        
     }
 }
 

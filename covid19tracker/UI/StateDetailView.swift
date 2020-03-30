@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import os
 
 struct StateDetailView: View {
     
@@ -16,9 +17,32 @@ struct StateDetailView: View {
         VStack {
             Text("Last Update: \(givenState.asOfDate ?? "")")
             Divider()
-            Text("Negative: \(givenState.negative ?? 0)")
-            Text("Positive: \(givenState.positive ?? 0)")
-            Text("Total: \(givenState.totalTestResults)")
+            
+            HStack {
+                VStack {
+                    Text("Negative: \(givenState.negative ?? 0)")
+                    Text("Positive: \(givenState.positive ?? 0)")
+                    Text("Total: \(givenState.totalTestResults)")
+                }
+                Spacer()
+                Button(action: {
+                    self.givenState.isFavorite = true
+                    os_log("StateDetail isFavorite %d", log: Log.viewLogger, type: .info, self.givenState.isFavorite ?? false)
+                }) {
+                    if self.givenState.isFavorite ?? false {
+                        Image(systemName: "star.fill")
+                            .imageScale(.medium)
+                            .foregroundColor(.yellow)
+                    } else {
+                        Image(systemName: "star")
+                            .imageScale(.medium)
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+            .padding()
+            
+            
             Divider()
             Text("Deaths: \(givenState.death ?? 0)")
             Spacer()
