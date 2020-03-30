@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @EnvironmentObject var userData: UserData
+    
     @State private var selectedTab = 0
     
     var body: some View {

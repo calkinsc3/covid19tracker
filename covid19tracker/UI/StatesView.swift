@@ -10,10 +10,14 @@ import SwiftUI
 
 struct StatesView: View {
     
+    @EnvironmentObject var userData: UserData
+    
     @ObservedObject var statesViewModel = StatesViewModel()
     
     @State var showingSortSheet = false
-    @State var showFavoritesOnly = false
+    
+    
+    
     
     var sortingActionSheet: ActionSheet {
         ActionSheet(title: Text("Sort By"),
@@ -48,13 +52,13 @@ struct StatesView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Toggle(isOn: $showFavoritesOnly) {
+                Toggle(isOn: $userData.showFavoritesOnly) {
                     Text("Favorites Only")
                 }
                 .padding()
                 
                 List(self.statesViewModel.stateResults) { state in
-                    if !self.showFavoritesOnly || (state.isFavorite ?? false) {
+                    if !self.userData.showFavoritesOnly {
                         NavigationLink(destination: StateDetailView(givenState: state)) {
                             StateCellView(state: state)
                         }

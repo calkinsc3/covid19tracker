@@ -9,7 +9,13 @@
 import Foundation
 
 
+let stateLookupData: [USState] = loadStates()
 
+struct USState {
+    let abbreviation : String
+    let longName : String
+    var isFavorite = false
+}
 
 let unitedStates = [
     "AL": "Alabama",
@@ -72,3 +78,7 @@ let unitedStates = [
     "WI": "Wisconsin",
     "WY": "Wyoming"
 ]
+
+func loadStates() -> [USState] {
+    return unitedStates.map{USState(abbreviation: $0.key, longName: $0.value)}
+}

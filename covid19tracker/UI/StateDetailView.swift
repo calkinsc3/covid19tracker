@@ -11,7 +11,13 @@ import os
 
 struct StateDetailView: View {
     
+    @EnvironmentObject var userData: UserData
+    
     @State var givenState: StateData
+    
+    var stateIndex: Int {
+        userData.statesLookup.firstIndex(where: {$0.abbreviation == givenState.state})!
+    }
     
     var body: some View {
         VStack {
@@ -26,10 +32,9 @@ struct StateDetailView: View {
                 }
                 Spacer()
                 Button(action: {
-                    self.givenState.isFavorite = true
-                    os_log("StateDetail isFavorite %d", log: Log.viewLogger, type: .info, self.givenState.isFavorite ?? false)
+                    self.userData.statesLookup[self.stateIndex].isFavorite.toggle()
                 }) {
-                    if self.givenState.isFavorite ?? false {
+                    if self.userData.statesLookup[self.stateIndex].isFavorite {
                         Image(systemName: "star.fill")
                             .imageScale(.medium)
                             .foregroundColor(.yellow)

@@ -10,15 +10,15 @@ import SwiftUI
 
 struct StateInfoView: View {
     
-    @ObservedObject var statesInfoViewModel = StateInfoViewModel()
+    @EnvironmentObject var userData: UserData
     
-    @State var showFavoritesOnly = false
+    @ObservedObject var statesInfoViewModel = StateInfoViewModel()
     
     var body: some View {
         NavigationView {
             
             VStack {
-                Toggle(isOn: $showFavoritesOnly) {
+                Toggle(isOn: $userData.showFavoritesOnly) {
                     Text("Favorites Only")
                 }
                 .padding()
