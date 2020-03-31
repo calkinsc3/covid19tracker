@@ -80,6 +80,26 @@ enum UsesCovidTrackingData: String, Codable {
     case yes = "yes"
 }
 
+// MARK: - StateDailyDatum
+struct StateDailyDatum: Codable {
+    let date: Int
+    let state: String
+    let positive, negative: Int
+    let pending: Int?
+    let hospitalized: Int?
+    let death: Int?
+    let total: Int
+    let hash: String
+    let dateChecked: Date
+    let totalTestResults: Int
+    let fips: String
+    let deathIncrease, hospitalizedIncrease, negativeIncrease, positiveIncrease: Int?
+    let totalTestResultsIncrease: Int?
+}
+
+typealias StateDailyData = [StateDailyDatum]
+
+
 // MARK: - StateInfoElement
 typealias StateInfo = [StateInfoElement]
 

@@ -20,6 +20,7 @@
 		9442AFEA24313FE7008E2602 /* StatePressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9442AFE924313FE7008E2602 /* StatePressView.swift */; };
 		9442AFEC24314004008E2602 /* StatePressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9442AFEB24314004008E2602 /* StatePressViewModel.swift */; };
 		9442AFEE24320A91008E2602 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9442AFED24320A91008E2602 /* UserData.swift */; };
+		94DD8FBC2432D81E003EC554 /* StateDaily.json in Resources */ = {isa = PBXBuildFile; fileRef = 94DD8FBB2432D81E003EC554 /* StateDaily.json */; };
 		94EF6284242E5251006BFB4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF6283242E5251006BFB4F /* AppDelegate.swift */; };
 		94EF6286242E5251006BFB4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF6285242E5251006BFB4F /* SceneDelegate.swift */; };
 		94EF6288242E5251006BFB4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF6287242E5251006BFB4F /* ContentView.swift */; };
@@ -61,6 +62,7 @@
 		9442AFE924313FE7008E2602 /* StatePressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatePressView.swift; sourceTree = "<group>"; };
 		9442AFEB24314004008E2602 /* StatePressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatePressViewModel.swift; sourceTree = "<group>"; };
 		9442AFED24320A91008E2602 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		94DD8FBB2432D81E003EC554 /* StateDaily.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StateDaily.json; sourceTree = "<group>"; };
 		94EF6280242E5251006BFB4F /* covid19tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = covid19tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EF6283242E5251006BFB4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94EF6285242E5251006BFB4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				9442AFD3242F80EC008E2602 /* States.json */,
 				9442AFDB243041CB008E2602 /* StateInfo.json */,
 				9442AFDD243041FC008E2602 /* PressInfo.json */,
+				94DD8FBB2432D81E003EC554 /* StateDaily.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				94EF62AE242E61D2006BFB4F /* StateMock.json in Resources */,
 				9442AFDC243041CB008E2602 /* StateInfo.json in Resources */,
 				9442AFD4242F80EC008E2602 /* States.json in Resources */,
+				94DD8FBC2432D81E003EC554 /* StateDaily.json in Resources */,
 				9442AFDE243041FC008E2602 /* PressInfo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

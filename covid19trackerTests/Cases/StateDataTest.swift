@@ -12,11 +12,7 @@ import XCTest
 class StateDataTests: XCTestCase {
     
     let jsonDecoder = JSONDecoder()
-    
-    private var stateData: Data?
-    private var stateInfoData: Data?
-    private var statePressData: Data?
-    
+
     override func setUpWithError() throws {
 
     }
@@ -27,11 +23,11 @@ class StateDataTests: XCTestCase {
     
     func testStateData() throws {
         
-        self.stateData = self.getMockData(forResource: "StateMock")
-        XCTAssertNotNil(self.stateData, "State mock did not load")
+        let stateData = self.getMockData(forResource: "StateMock")
+        XCTAssertNotNil(stateData, "State mock did not load")
         
         //Decode State Data
-        if let givenStateData = self.stateData {
+        if let givenStateData = stateData {
             do {
                 self.jsonDecoder.dateDecodingStrategy = .iso8601
                 let stateModels = try self.jsonDecoder.decode(StateModels.self, from: givenStateData)
@@ -50,13 +46,39 @@ class StateDataTests: XCTestCase {
         
     }
     
+    func testStateDailyData() throws {
+        
+        let stateDailyData = self.getMockData(forResource: "StateDaily")
+        XCTAssertNotNil(stateDailyData, "State Daily mock did not load")
+        
+        //Decode State Data
+        if let givenStateData = stateDailyData {
+            do {
+                self.jsonDecoder.dateDecodingStrategy = .iso8601
+                let stateDailyData = try self.jsonDecoder.decode(StateDailyData.self, from: givenStateData)
+                XCTAssertTrue(stateDailyData.count == 27, "State count should be 27. Count is \(stateDailyData.count)")
+                
+                if let wisconsinNumbers = stateDailyData.first {
+                    XCTAssertTrue(wisconsinNumbers.positive == 1221, "WI Positive Number should be 1221")
+                    XCTAssertTrue(wisconsinNumbers.negative == 15856, "WI Negative Number should be 15856")
+                }
+                
+                
+            } catch  {
+                XCTFail("Failed to decode State data: \(error)")
+            }
+        }
+        
+    }
+    
+    
     func testStateInfo() throws {
         
-        self.stateInfoData = self.getMockData(forResource: "StateInfo")
-        XCTAssertNotNil(self.stateInfoData, "State Info mock did not load")
+        let stateInfoData = self.getMockData(forResource: "StateInfo")
+        XCTAssertNotNil(stateInfoData, "State Info mock did not load")
         
         //Decode State Info Data
-        if let givenStateInfoData = self.stateInfoData {
+        if let givenStateInfoData = stateInfoData {
             do {
                 
                 let stateInfoModel = try self.jsonDecoder.decode(StateInfo.self, from: givenStateInfoData)
@@ -78,10 +100,10 @@ class StateDataTests: XCTestCase {
     
     func testPressInfo() throws {
         
-        self.statePressData = self.getMockData(forResource: "PressInfo")
+        let statePressData = self.getMockData(forResource: "PressInfo")
         
         //Decode State Press Data
-        if let givenPressInfoData = self.statePressData {
+        if let givenPressInfoData = statePressData {
             do {
                 let statePressInfo = try self.jsonDecoder.decode(PressData.self, from: givenPressInfoData)
                 XCTAssertTrue(statePressInfo.count == 60, "State Press count should be 100. Count is \(statePressInfo.count)")
