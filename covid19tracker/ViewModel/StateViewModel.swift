@@ -15,13 +15,14 @@ import os
 class StatesViewModel: ObservableObject {
     
     @Published var stateResults : StateModels = []
+    @Published var stateDailyResults: StateDailyData = []
     @Published var showFavoritesOnly = false
     
     private let stateFetcher = StateItemsFetcher()
     private var disposable = Set<AnyCancellable>()
     
     init() {
-       self.fetchStatesResults()
+        self.fetchStatesResults()
     }
     
     private func fetchStatesResults() {
@@ -49,6 +50,32 @@ class StatesViewModel: ObservableObject {
             })
             .store(in: &disposable)
         
+    }
+    
+    func fetchStateDailyResults(forState state: String) {
+        
+        stateFetcher.stateDailyItems(forState: state)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                
+                switch completion {
+                case .failure(let stateItemError):
+                    switch stateItemError as StatePublishError {
+                    case .decoding(let decodingError):
+                        os_log("Decoding error in fetchStateDailyResults error: %s", log: Log.subscriberLogger, type: .error, decodingError)
+                    case .network(let networkingError):
+                        os_log("Networking error in fetchStateDailyResults error: %s", log: Log.subscriberLogger, type: .error, networkingError)
+                    case .apiError(let apiError) :
+                        os_log("API error in fetchStateDailyResults received in subscriber: %s", log: Log.subscriberLogger, type: .error, apiError)
+                    }
+                case .finished:
+                    break
+                }
+            }, receiveValue: { [weak self] stateDailyModels in
+                guard let self = self else { return }
+                self.stateDailyResults = stateDailyModels.sorted(by:{$0.dateChecked > $1.dateChecked})
+            })
+            .store(in: &disposable)
     }
     
     

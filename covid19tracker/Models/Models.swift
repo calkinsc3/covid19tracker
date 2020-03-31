@@ -81,10 +81,11 @@ enum UsesCovidTrackingData: String, Codable {
 }
 
 // MARK: - StateDailyDatum
-struct StateDailyDatum: Codable {
+struct StateDailyDatum: Codable, Identifiable {
+    let id = UUID()
     let date: Int
     let state: String
-    let positive, negative: Int
+    let positive, negative: Int?
     let pending: Int?
     let hospitalized: Int?
     let death: Int?
@@ -95,6 +96,13 @@ struct StateDailyDatum: Codable {
     let fips: String
     let deathIncrease, hospitalizedIncrease, negativeIncrease, positiveIncrease: Int?
     let totalTestResultsIncrease: Int?
+    
+    var dateCheckedDisplay: String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/YYYY"
+        
+        return dateFormatter.string(from: self.dateChecked)
+    }
 }
 
 typealias StateDailyData = [StateDailyDatum]

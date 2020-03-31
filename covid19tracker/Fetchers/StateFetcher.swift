@@ -12,6 +12,7 @@ import Combine
 typealias StatePublisher = AnyPublisher<StateModels, StatePublishError>
 typealias StateInfoPublisher = AnyPublisher<StateInfo, StatePublishError>
 typealias StatePressPublisher = AnyPublisher<PressData, StatePublishError>
+typealias StateDailyPublisher = AnyPublisher<StateDailyData, StatePublishError>
 
 protocol StateFetchable {
     func stateItems() -> StatePublisher
@@ -44,6 +45,10 @@ extension StateItemsFetcher : StateFetchable {
         return self.stateItems(with: self.makeCOVIDPressComponents())
     }
     
+    func stateDailyItems(forState state: String) -> StateDailyPublisher {
+        return self.stateItems(with: self.makeCOVIDDailyStateInfoComponents(forState: state))
+    }
+    
     //MARK:- State Publisher
     private func stateItems<T>(with components: URLComponents) -> AnyPublisher<T, StatePublishError> where T: Decodable {
         
@@ -73,6 +78,7 @@ private extension StateItemsFetcher {
         static let path = "/api/states"
         static let infoPath = "/api/urls"
         static let pressPath = "/api/press"
+        static let dailyPath = "\(path)/daily"
     }
     
     func makeCOVIDStateComponents() -> URLComponents {
@@ -104,6 +110,18 @@ private extension StateItemsFetcher {
         components.scheme = COVID19_API.schema
         components.host = COVID19_API.host
         components.path = COVID19_API.pressPath
+        
+        return components
+    }
+    
+    func makeCOVIDDailyStateInfoComponents(forState state: String) -> URLComponents {
+        
+        var components = URLComponents()
+        
+        components.scheme = COVID19_API.schema
+        components.host = COVID19_API.host
+        components.path = COVID19_API.dailyPath
+        components.queryItems = [URLQueryItem(name: "state", value: state)]
         
         return components
     }

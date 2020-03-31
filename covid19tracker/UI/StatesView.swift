@@ -16,9 +16,6 @@ struct StatesView: View {
     
     @State var showingSortSheet = false
     
-    
-    
-    
     var sortingActionSheet: ActionSheet {
         ActionSheet(title: Text("Sort By"),
                     message: Text("How would you like to sort the States?"), buttons: [
@@ -53,7 +50,7 @@ struct StatesView: View {
         NavigationView {
             VStack {
                 Toggle(isOn: $userData.showFavoritesOnly) {
-                    Text("Favorites Only")
+                    Text("Watched Only")
                 }
                 .padding()
                 

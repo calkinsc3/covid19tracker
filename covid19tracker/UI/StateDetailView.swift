@@ -13,6 +13,8 @@ struct StateDetailView: View {
     
     @EnvironmentObject var userData: UserData
     
+    @ObservedObject var statesViewModel = StatesViewModel()
+    
     @State var givenState: StateData
     
     var stateIndex: Int {
@@ -50,14 +52,38 @@ struct StateDetailView: View {
             
             Divider()
             Text("Deaths: \(givenState.death ?? 0)")
-            Spacer()
+            Divider()
+            
+            List(self.statesViewModel.stateDailyResults) { dailyData in
+                StateDailyCell(dailyStateData: dailyData)
+            }
+            
+            
         }
         .navigationBarTitle(givenState.stateName ?? "")
+        .onAppear {
+            self.statesViewModel.fetchStateDailyResults(forState: self.givenState.state)
+        }
     }
 }
 
-struct StateDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        StateDetailView(givenState: StateData.placeholder)
+struct StateDailyCell: View {
+    
+    let dailyStateData : StateDailyDatum
+    
+    var body: some View {
+        VStack {
+            Text("Date: \(dailyStateData.dateCheckedDisplay ?? "Unknown")")
+            Text("Positive: \(dailyStateData.positive ?? 0)")
+            Text("Positive Increase: \(dailyStateData.positiveIncrease ?? 0)")
+            Text("Negative Increase: \(dailyStateData.negativeIncrease ?? 0)")
+            Text("Positive Increase: \(dailyStateData.totalTestResultsIncrease ?? 0)")
+        }
     }
 }
+
+//struct StateDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StateDetailView(givenState: StateData.placeholder)
+//    }
+//}
