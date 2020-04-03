@@ -6,9 +6,9 @@
  There is still a lot of work to be done on this app. Wish list:
  1. App Icons
  2. Pull to refresh functionality
- 3. CoreLocation based favorites
+ 3. CoreLocation based on watched states
  4. Loading spinner for WKWebView
- 5. State List Data on the State Detail view
+ 5. Postitive change rate per state
  
  I plan to get to these over the coming days.
  
