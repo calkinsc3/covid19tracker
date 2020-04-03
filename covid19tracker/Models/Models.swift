@@ -85,7 +85,8 @@ struct StateDailyDatum: Codable, Identifiable {
     let id = UUID()
     let date: Int
     let state: String
-    let positive, negative: Int
+    let positive : Int
+    let negative: Int?
     let pending, hospitalizedCurrently, hospitalizedCumulative, inIcuCurrently: Int?
     let inIcuCumulative: Int?
     let onVentilatorCurrently, onVentilatorCumulative: Int?
