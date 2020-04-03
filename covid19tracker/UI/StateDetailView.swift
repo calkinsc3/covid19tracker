@@ -74,9 +74,18 @@ struct StateDailyCell: View {
     var body: some View {
         VStack {
             Text("Date: \(dailyStateData.dateCheckedDisplay ?? "Unknown")")
-            Text("Positive: \(dailyStateData.positive ?? 0)")
-            Text("Positive Increase: \(dailyStateData.positiveIncrease ?? 0)")
-            Text("Negative Increase: \(dailyStateData.negativeIncrease ?? 0)")
+            HStack {
+                VStack {
+                    Text("Positive: \(dailyStateData.positive ?? 0)")
+                    Text("Increase: \(dailyStateData.positiveIncrease ?? 0)")
+                }
+                .font(.subheadline)
+                VStack {
+                    Text("Negative: \(dailyStateData.negative ?? 0)")
+                    Text("Increase: \(dailyStateData.negativeIncrease ?? 0)")
+                }
+                .font(.subheadline)
+            }
             Text("Positive Increase: \(dailyStateData.totalTestResultsIncrease ?? 0)")
         }
     }
