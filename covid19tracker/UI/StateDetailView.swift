@@ -72,27 +72,33 @@ struct StateDailyCell: View {
     let dailyStateData : StateDailyDatum
     
     var body: some View {
-        VStack {
+        VStack (alignment: .center) {
             Text("Date: \(dailyStateData.dateCheckedDisplay ?? "Unknown")")
             HStack {
-                VStack {
-                    Text("Positive: \(dailyStateData.positive ?? 0)")
-                    Text("Increase: \(dailyStateData.positiveIncrease ?? 0)")
+                VStack (alignment: .leading) {
+                    Text("Increases")
+                        .font(.headline)
+                    Text("Hospitalized: \(dailyStateData.hospitalizedIncrease ?? 0)")
+                    Text("Deaths: \(dailyStateData.deathIncrease ?? 0)")
                 }
                 .font(.subheadline)
-                VStack {
-                    Text("Negative: \(dailyStateData.negative ?? 0)")
-                    Text("Increase: \(dailyStateData.negativeIncrease ?? 0)")
+                //Divider()
+                VStack (alignment: .leading) {
+                    Text("Hospitals")
+                        .font(.headline)
+                    Text("Current: \(dailyStateData.hospitalizedCurrently ?? 0)")
+                    Text("In ICU: \(dailyStateData.inIcuCurrently ?? 0)")
                 }
                 .font(.subheadline)
             }
-            Text("Positive Increase: \(dailyStateData.totalTestResultsIncrease ?? 0)")
+            Text(dailyStateData.recovered != nil ? "Recoveries: \(dailyStateData.recovered ?? 0)" : "")
+            
         }
     }
 }
 
-//struct StateDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StateDetailView(givenState: StateData.placeholder)
-//    }
-//}
+struct StateDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        StateDailyCell(dailyStateData: StateDailyDatum.placeholder)
+    }
+}

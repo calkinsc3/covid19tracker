@@ -85,14 +85,16 @@ struct StateDailyDatum: Codable, Identifiable {
     let id = UUID()
     let date: Int
     let state: String
-    let positive, negative: Int?
-    let pending: Int?
-    let hospitalized: Int?
-    let death: Int?
-    let total: Int
+    let positive, negative: Int
+    let pending, hospitalizedCurrently, hospitalizedCumulative, inIcuCurrently: Int?
+    let inIcuCumulative: Int?
+    let onVentilatorCurrently, onVentilatorCumulative: Int?
+    let recovered: Int?
     let hash: String
     let dateChecked: Date
-    let totalTestResults: Int
+    let death: Int?
+    let hospitalized: Int?
+    let total, totalTestResults, posNeg: Int
     let fips: String
     let deathIncrease, hospitalizedIncrease, negativeIncrease, positiveIncrease: Int?
     let totalTestResultsIncrease: Int?
@@ -103,6 +105,8 @@ struct StateDailyDatum: Codable, Identifiable {
         
         return dateFormatter.string(from: self.dateChecked)
     }
+    
+    static let `placeholder` = Self(date: 20200402, state: "NY", positive: 92381, negative: 146584, pending: nil, hospitalizedCurrently: 13383, hospitalizedCumulative: 20817, inIcuCurrently: 3396, inIcuCumulative: nil, onVentilatorCurrently: nil, onVentilatorCumulative: nil, recovered: 7434, hash: "764d0566c27be04c416c502640d5fffbcb8cad26", dateChecked: ISO8601DateFormatter().date(from: "2020-04-02T20:00:00Z") ?? Date(), death: 2373, hospitalized: 20817, total: 238965, totalTestResults: 238965, posNeg: 238965, fips: "fips", deathIncrease: 432, hospitalizedIncrease: 2449, negativeIncrease: 9416, positiveIncrease: 8669, totalTestResultsIncrease: 18085)
 }
 
 typealias StateDailyData = [StateDailyDatum]

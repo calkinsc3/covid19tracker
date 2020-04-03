@@ -56,11 +56,11 @@ class StateDataTests: XCTestCase {
             do {
                 self.jsonDecoder.dateDecodingStrategy = .iso8601
                 let stateDailyData = try self.jsonDecoder.decode(StateDailyData.self, from: givenStateData)
-                XCTAssertTrue(stateDailyData.count == 27, "State count should be 27. Count is \(stateDailyData.count)")
+                XCTAssertTrue(stateDailyData.count == 30, "State count should be 27. Count is \(stateDailyData.count)")
                 
-                if let wisconsinNumbers = stateDailyData.first {
-                    XCTAssertTrue(wisconsinNumbers.positive == 1221, "WI Positive Number should be 1221")
-                    XCTAssertTrue(wisconsinNumbers.negative == 15856, "WI Negative Number should be 15856")
+                if let nyNumbers = stateDailyData.first {
+                    XCTAssertTrue(nyNumbers.positive == 92381, "WI Positive Number should be 92381")
+                    XCTAssertTrue(nyNumbers.negative == 146584, "WI Negative Number should be 146584")
                 }
                 
                 
