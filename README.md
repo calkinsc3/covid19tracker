@@ -8,6 +8,7 @@
  2. Pull to refresh functionality
  3. CoreLocation based on watched states
  4. Loading spinner for WKWebView
+ 5. Postitive change rate per state
  
  I plan to get to these over the coming days.
  
