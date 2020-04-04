@@ -50,12 +50,17 @@ struct StatesView: View {
         NavigationView {
             VStack {
                 Toggle(isOn: $userData.showFavoritesOnly) {
-                    Text("Watched Only")
+                    Text("Watched")
                 }
                 .padding()
                 
                 List(self.statesViewModel.stateResults) { state in
-                    if !self.userData.showFavoritesOnly {
+                    //if the watch list is enabled
+                    if self.userData.showFavoritesOnly || self.userData.statesLookup.filter({$0.abbreviation == state.state}).first?.isFavorite ?? false  {
+                        NavigationLink(destination: StateDetailView(givenState: state)) {
+                            StateCellView(state: state)
+                        }
+                    } else { //we are showing all states
                         NavigationLink(destination: StateDetailView(givenState: state)) {
                             StateCellView(state: state)
                         }
@@ -73,6 +78,8 @@ struct StatesView: View {
 }
 
 struct StateCellView: View {
+    
+    @EnvironmentObject var userData: UserData
     
     let state: StateData
     @State private var favorite = false
@@ -93,7 +100,7 @@ struct StateCellView: View {
                         .font(.body)
                 }
             }
-            if state.isFavorite ?? false {
+            if userData.statesLookup.filter({$0.abbreviation == state.state}).first?.isFavorite ?? false {
                 Image(systemName: "star.fill")
                     .imageScale(.medium)
                     .foregroundColor(.yellow)

@@ -19,7 +19,7 @@ struct StateInfoView: View {
             
             VStack {
                 Toggle(isOn: $userData.showFavoritesOnly) {
-                    Text("Watched Only")
+                    Text("Watched")
                 }
                 .padding()
                 
