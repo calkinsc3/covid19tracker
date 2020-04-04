@@ -10,6 +10,6 @@ import SwiftUI
 import Combine
 
 final class UserData: ObservableObject {
-    @Published var showFavoritesOnly = false
+    @Published var showWatchedOnly = false
     @Published var statesLookup = stateLookupData
 }

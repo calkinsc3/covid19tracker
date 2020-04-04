@@ -49,20 +49,16 @@ struct StatesView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Toggle(isOn: $userData.showFavoritesOnly) {
+                Toggle(isOn: $userData.showWatchedOnly) {
                     Text("Watched")
                 }
                 .padding()
                 
                 List(self.statesViewModel.stateResults) { state in
                     //if the watch list is enabled
-                    if self.userData.showFavoritesOnly || self.userData.statesLookup.filter({$0.abbreviation == state.state}).first?.isFavorite ?? false  {
+                    if !self.userData.showWatchedOnly || self.userData.statesLookup.filter({$0.abbreviation == state.state}).first?.isFavorite ?? false  {
                         NavigationLink(destination: StateDetailView(givenState: state)) {
-                            StateCellView(state: state)
-                        }
-                    } else { //we are showing all states
-                        NavigationLink(destination: StateDetailView(givenState: state)) {
-                            StateCellView(state: state)
+                            StateCellView(state: state).environmentObject(self.userData)
                         }
                     }
                 }
