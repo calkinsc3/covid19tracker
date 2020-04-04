@@ -55,8 +55,8 @@ struct StatesView: View {
                 .padding()
                 
                 List(self.statesViewModel.stateResults) { state in
-                    //if the watch list is enabled
-                    if !self.userData.showWatchedOnly || self.userData.statesLookup.filter({$0.abbreviation == state.state}).first?.isFavorite ?? false  {
+                    //FIXME:- find a better way
+                    if !self.userData.showWatchedOnly || self.userData.statesLookup[self.userData.statesLookup.firstIndex(where: {$0.abbreviation == state.state})!].isFavorite  {
                         NavigationLink(destination: StateDetailView(givenState: state)) {
                             StateCellView(state: state).environmentObject(self.userData)
                         }
