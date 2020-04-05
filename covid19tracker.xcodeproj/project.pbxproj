@@ -37,6 +37,7 @@
 		94EF62BC242E8C2C006BFB4F /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF62BB242E8C2C006BFB4F /* Parsing.swift */; };
 		94EF62BE242E8FEE006BFB4F /* StatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF62BD242E8FEE006BFB4F /* StatesView.swift */; };
 		FA1F78C5243A394600FFC39F /* USTotals.json in Resources */ = {isa = PBXBuildFile; fileRef = FA1F78C4243A394600FFC39F /* USTotals.json */; };
+		FAD586D4243A889200718C56 /* USInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD586D3243A889200718C56 /* USInfoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		94EF62BB242E8C2C006BFB4F /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
 		94EF62BD242E8FEE006BFB4F /* StatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesView.swift; sourceTree = "<group>"; };
 		FA1F78C4243A394600FFC39F /* USTotals.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = USTotals.json; sourceTree = "<group>"; };
+		FAD586D3243A889200718C56 /* USInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USInfoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 		94EF62B5242E7DF7006BFB4F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FAD586D3243A889200718C56 /* USInfoViewModel.swift */,
 				94EF62B3242E7DED006BFB4F /* StateViewModel.swift */,
 				9442AFE12430C94F008E2602 /* StateInfoViewModel.swift */,
 				9442AFEB24314004008E2602 /* StatePressViewModel.swift */,
@@ -372,6 +375,7 @@
 				9442AFD8242F8262008E2602 /* StateDetailView.swift in Sources */,
 				94EF62AB242E5F43006BFB4F /* Models.swift in Sources */,
 				9442AFE62430D870008E2602 /* StatesWebView.swift in Sources */,
+				FAD586D4243A889200718C56 /* USInfoViewModel.swift in Sources */,
 				94EF6288242E5251006BFB4F /* ContentView.swift in Sources */,
 				94EF62BA242E8232006BFB4F /* ErrorConstants.swift in Sources */,
 				9442AFE22430C94F008E2602 /* StateInfoViewModel.swift in Sources */,

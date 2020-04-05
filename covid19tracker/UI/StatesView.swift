@@ -13,6 +13,7 @@ struct StatesView: View {
     @EnvironmentObject var userData: UserData
     
     @ObservedObject var statesViewModel = StatesViewModel()
+    @ObservedObject var usInfoViewModel = USInfoViewModel()
     
     @State var showingSortSheet = false
     
@@ -49,6 +50,10 @@ struct StatesView: View {
     var body: some View {
         NavigationView {
             VStack {
+//                VStack {
+//                    //Text("Positive: \(self.usInfoViewModel.usInfoResults)")
+//                }
+                Divider()
                 Toggle(isOn: $userData.showWatchedOnly) {
                     Text("Watched")
                 }
