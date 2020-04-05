@@ -12,9 +12,9 @@ import XCTest
 class StateDataTests: XCTestCase {
     
     let jsonDecoder = JSONDecoder()
-
+    
     override func setUpWithError() throws {
-
+        
     }
     
     override func tearDownWithError() throws {
@@ -113,10 +113,28 @@ class StateDataTests: XCTestCase {
             }
             
         }
-            
-        
     }
     
+    func testUSTotals() throws {
+        
+        let usInfo  = self.getMockData(forResource: "USTotals")
+        
+        //Decode State Press Data
+        if let giveUSInfo = usInfo {
+            do {
+                let usTotals = try self.jsonDecoder.decode(USTotals.self, from: giveUSInfo)
+                if let givenTotalInfo = usTotals.first {
+                    XCTAssertTrue(givenTotalInfo.positive == 307913, "givenTotalInfo.positive should be 307913" )
+                    XCTAssertTrue(givenTotalInfo.death == 8381, "givenTotalInfo.death should be 8381")
+                    XCTAssertTrue(givenTotalInfo.hospitalized == 38615, "givenTotalInfo.death should be 38615" )
+                    XCTAssertTrue(givenTotalInfo.recovered == 12787, "givenTotalInfo.death should be 12787" )
+                }
+            } catch {
+                XCTFail("Failed to decode Press info data: \(error)")
+                
+            }
+        }
+    }
     
     
     //MARK:- Helper Functions

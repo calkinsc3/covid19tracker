@@ -173,3 +173,15 @@ struct PressDatum: Codable, Identifiable {
         return URLRequest(url: url)
     }
 }
+
+typealias USTotals = [USTotal]
+
+struct USTotal: Codable {
+    let positive, negative, pending, hospitalizedCurrently: Int
+    let hospitalizedCumulative, inIcuCurrently, inIcuCumulative, onVentilatorCurrently: Int
+    let onVentilatorCumulative, recovered: Int
+    let hash, lastModified: String
+    let death, hospitalized, total, totalTestResults: Int
+    let posNeg: Int
+    let notes: String
+}

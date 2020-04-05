@@ -13,3 +13,9 @@ enum StatePublishError: Error {
     case decoding(description: String)
     case apiError(description: String)
 }
+
+enum USTotalsPublishError: Error {
+    case network(description: String)
+    case decoding(description: String)
+    case apiError(description: String)
+}
