@@ -208,4 +208,18 @@ struct USTotal: Codable {
         numberFormatter.numberStyle = .decimal
         return numberFormatter.string(from: NSNumber(value:self.death))
     }
+    
+    var datePublished: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/YYYY"
+        
+        return dateFormatter.date(from: self.lastModified)
+    }
+    
+    var datePublishedDisplay: String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/YYYY"
+        
+        return dateFormatter.string(from: self.datePublished ?? Date())
+    }
 }
