@@ -16,6 +16,7 @@ struct StatesView: View {
     @ObservedObject var usInfoViewModel = USInfoViewModel()
     
     @State var showingSortSheet = false
+    @State var showingUSTotals = false
     
     var sortingActionSheet: ActionSheet {
         ActionSheet(title: Text("Sort By"),
@@ -47,12 +48,17 @@ struct StatesView: View {
         }
     }
     
+    var usTotalsSheetButton: some View {
+        Button(action: {
+            self.showingUSTotals.toggle()
+        }) {
+            Image(systemName: "sum")
+        }
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
-//                VStack {
-//                    //Text("Positive: \(self.usInfoViewModel.usInfoResults)")
-//                }
                 Divider()
                 Toggle(isOn: $userData.showWatchedOnly) {
                     Text("Watched")
@@ -67,12 +73,15 @@ struct StatesView: View {
                         }
                     }
                 }
-                .navigationBarTitle("States")
-                .navigationBarItems(trailing: self.sortActionSheetButton)
-                .actionSheet(isPresented: $showingSortSheet) {
-                    self.sortingActionSheet
-                }
             }
+            .navigationBarTitle("States")
+            .navigationBarItems(leading: self.usTotalsSheetButton, trailing: self.sortActionSheetButton)
+            .actionSheet(isPresented: $showingSortSheet) {
+                self.sortingActionSheet
+            }
+            .sheet(isPresented: $showingUSTotals, content: {
+                USTotalsView()
+            })
             
         }
     }
