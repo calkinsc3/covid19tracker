@@ -184,4 +184,42 @@ struct USTotal: Codable {
     let death, hospitalized, total, totalTestResults: Int
     let posNeg: Int
     let notes: String
+    
+    var formattedPositive: String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value: self.positive))
+    }
+    
+    var formattedInICU: String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value:self.inIcuCurrently))
+    }
+    
+    var formattedHospitalized: String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value:self.hospitalizedCurrently))
+    }
+    
+    var forattedDeath: String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value:self.death))
+    }
+    
+    var datePublished: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/YYYY"
+        
+        return dateFormatter.date(from: self.lastModified)
+    }
+    
+    var datePublishedDisplay: String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/YYYY"
+        
+        return dateFormatter.string(from: self.datePublished ?? Date())
+    }
 }
