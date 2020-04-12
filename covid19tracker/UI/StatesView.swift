@@ -26,14 +26,14 @@ struct StatesView: View {
                         .default(Text("Positive Tests"), action: {
                             self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.positive ?? 0 > $1.positive ?? 0})
                         }),
-                        .default(Text("Negative Tests"), action: {
-                            self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.negative ?? 0 > $1.negative ?? 0})
-                        }),
-                        .default(Text("Total Tested"), action: {
-                            self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.totalTestResults > $1.totalTestResults})
-                        }),
                         .default(Text("Deaths"), action: {
                             self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.death ?? 0 > $1.death ?? 0})
+                        }),
+                        .default(Text("Alphabetically Asc"), action: {
+                            self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.stateName ?? "" < $1.stateName ?? ""})
+                        }),
+                        .default(Text("Alphabetically Desc"), action: {
+                            self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.stateName ?? "" > $1.stateName ?? ""})
                         }),
                         .cancel(Text("Cancel"))
         ])
