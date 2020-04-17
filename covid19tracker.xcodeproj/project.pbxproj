@@ -67,7 +67,7 @@
 		9442AFED24320A91008E2602 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		947D2001243AC0A700F878A8 /* USTotalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USTotalsView.swift; sourceTree = "<group>"; };
 		94DD8FBB2432D81E003EC554 /* StateDaily.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StateDaily.json; sourceTree = "<group>"; };
-		94EF6280242E5251006BFB4F /* covid19tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = covid19tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94EF6280242E5251006BFB4F /* COVID Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EF6283242E5251006BFB4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94EF6285242E5251006BFB4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		94EF6287242E5251006BFB4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		94EF6281242E5251006BFB4F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				94EF6280242E5251006BFB4F /* covid19tracker.app */,
+				94EF6280242E5251006BFB4F /* COVID Tracker.app */,
 				94EF6296242E5253006BFB4F /* covid19trackerTests.xctest */,
 			);
 			name = Products;
@@ -273,7 +273,7 @@
 			);
 			name = covid19tracker;
 			productName = covid19tracker;
-			productReference = 94EF6280242E5251006BFB4F /* covid19tracker.app */;
+			productReference = 94EF6280242E5251006BFB4F /* COVID Tracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 		94EF6295242E5253006BFB4F /* covid19trackerTests */ = {
@@ -549,7 +549,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.c3.covid19tracker;
-				PRODUCT_NAME = covid19tracker;
+				PRODUCT_NAME = "COVID Tracker";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -573,7 +573,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.c3.covid19tracker;
-				PRODUCT_NAME = covid19tracker;
+				PRODUCT_NAME = "COVID Tracker";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
