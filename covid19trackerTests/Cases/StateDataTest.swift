@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import covid19tracker
+@testable import COVID_Tracker
 
 class StateDataTests: XCTestCase {
     

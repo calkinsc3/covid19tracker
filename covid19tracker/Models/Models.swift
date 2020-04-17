@@ -14,7 +14,7 @@ typealias StateModels = [StateData]
 // MARK: - StateDatum
 struct StateData: Codable, Identifiable {
     let id = UUID()
-    var isFavorite : Bool? = false
+    let isFavorite = false
     let state: String
     let positive: Int?
     let positiveScore, negativeScore, negativeRegularScore, commercialScore: Int?

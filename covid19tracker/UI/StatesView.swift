@@ -15,8 +15,9 @@ struct StatesView: View {
     @ObservedObject var statesViewModel = StatesViewModel()
     @ObservedObject var usInfoViewModel = USInfoViewModel()
     
-    @State var showingSortSheet = false
-    @State var showingUSTotals = false
+    @State private var showingSortSheet = false
+    @State private var showingUSTotals = false
+    @State private var showWatchedOnly = false
     
     var sortingActionSheet: ActionSheet {
         ActionSheet(title: Text("Sort By"),
@@ -64,15 +65,20 @@ struct StatesView: View {
                     Text("Watched")
                 }
                 .padding()
-                
-                List(self.statesViewModel.stateResults) { state in
-                    //FIXME:- find a better way
-                    if !self.userData.showWatchedOnly || self.userData.statesLookup[self.userData.statesLookup.firstIndex(where: {$0.abbreviation == state.state})!].isFavorite  {
+                if userData.showWatchedOnly {
+                    List(self.statesViewModel.stateResults.filter({$0.isFavorite})) { state in
+                        NavigationLink(destination: StateDetailView(givenState: state)) {
+                            StateCellView(state: state).environmentObject(self.userData)
+                        }
+                    }
+                } else {
+                   List(self.statesViewModel.stateResults) { state in
                         NavigationLink(destination: StateDetailView(givenState: state)) {
                             StateCellView(state: state).environmentObject(self.userData)
                         }
                     }
                 }
+                
             }
             .navigationBarTitle("States")
             .navigationBarItems(leading: self.usTotalsSheetButton, trailing: self.sortActionSheetButton)

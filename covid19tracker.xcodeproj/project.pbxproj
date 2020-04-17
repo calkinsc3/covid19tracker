@@ -42,7 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		94EF6297242E5253006BFB4F /* PBXContainerItemProxy */ = {
+		94229807244A2C94000EA10F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94EF6278242E5251006BFB4F /* Project object */;
 			proxyType = 1;
@@ -287,7 +287,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				94EF6298242E5253006BFB4F /* PBXTargetDependency */,
+				94229808244A2C94000EA10F /* PBXTargetDependency */,
 			);
 			name = covid19trackerTests;
 			productName = covid19trackerTests;
@@ -399,10 +399,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		94EF6298242E5253006BFB4F /* PBXTargetDependency */ = {
+		94229808244A2C94000EA10F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 94EF627F242E5251006BFB4F /* covid19tracker */;
-			targetProxy = 94EF6297242E5253006BFB4F /* PBXContainerItemProxy */;
+			targetProxy = 94229807244A2C94000EA10F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -598,7 +598,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/covid19tracker.app/covid19tracker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/COVID Tracker.app/COVID Tracker";
 			};
 			name = Debug;
 		};
@@ -620,7 +620,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/covid19tracker.app/covid19tracker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/COVID Tracker.app/COVID Tracker";
 			};
 			name = Release;
 		};

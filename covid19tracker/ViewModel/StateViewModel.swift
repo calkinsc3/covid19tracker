@@ -16,7 +16,8 @@ class StatesViewModel: ObservableObject {
     
     @Published var stateResults : StateModels = []
     @Published var stateDailyResults: StateDailyData = []
-    @Published var showFavoritesOnly = false
+    @Published var watchStateResults: StateModels = []
+    
     
     private let stateFetcher = StateItemsFetcher()
     private var disposable = Set<AnyCancellable>()
