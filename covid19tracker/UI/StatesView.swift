@@ -80,9 +80,10 @@ struct StatesView: View {
                 self.sortingActionSheet
             }
             .sheet(isPresented: $showingUSTotals, content: {
-                USTotalsView ()
+                USTotalsView (onDismiss: ({
+                    self.showingUSTotals = false
+                }))
             })
-            
         }
     }
 }
