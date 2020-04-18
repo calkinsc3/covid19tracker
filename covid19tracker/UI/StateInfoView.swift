@@ -18,10 +18,10 @@ struct StateInfoView: View {
         NavigationView {
             
             VStack {
-                Toggle(isOn: $userData.showWatchedOnly) {
-                    Text("Watched")
-                }
-                .padding()
+//                Toggle(isOn: $userData.showWatchedOnly) {
+//                    Text("Watched")
+//                }
+//                .padding()
                 
                 List(self.statesInfoViewModel.stateInfo) { stateInfo in
                     NavigationLink(destination: StatesWebView(urlRequest: stateInfo.urlRequest), label: {

@@ -61,9 +61,9 @@ struct StatesView: View {
         NavigationView {
             VStack {
                 Divider()
-                Toggle(isOn: $userData.showWatchedOnly) {
-                    Text("Watched")
-                }
+//                Toggle(isOn: $userData.showWatchedOnly) {
+//                    Text("Watched")
+//                }
                 .padding()
                 if userData.showWatchedOnly {
                     List(self.statesViewModel.stateResults.filter({$0.isFavorite})) { state in
@@ -130,10 +130,6 @@ struct StateCellView: View {
 
 struct StatesView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
             StatesView()
-            StateCellView(state: StateData.placeholder)
-        }
-        
     }
 }

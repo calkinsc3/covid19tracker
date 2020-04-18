@@ -1,0 +1,36 @@
+{
+  "postTime" : 1586893817613.8911,
+  "events" : [
+    {
+      "CloudServicesBackupWithChangesFull-softfail" : 0,
+      "eventType" : "CloudServicesHealthSummary",
+      "CloudServicesiCloudIdentity-hardfail" : 0,
+      "CloudServicesSetConfirmedManifest-hardfail" : 0,
+      "topic" : "xp_coreos_securebackup",
+      "CloudServicesBackupWithChangesIncremental-hardfail" : 0,
+      "modelid" : "MacBookAir8,1",
+      "CloudServicesAnalyticsiCDPKeybagRecoveryKey-hardfail" : 0,
+      "hard_failure_count" : 0,
+      "CloudServicesAnalyticsiCDPKeybag-hardfail" : 0,
+      "success_count" : 34,
+      "eventLinkID" : "3067EAEE-FC3D-4511-80D4-4C5109A8607D",
+      "CloudServicesBackupWithChangesFull-hardfail" : 0,
+      "eventTime" : 1586893817607.459,
+      "build" : "19E287",
+      "CloudServicesAnalyticsiCDPKeybag-success" : 5,
+      "CloudServicesiCloudIdentity-softfail" : 0,
+      "CloudServicesAnalyticsiCDPKeybag-softfail" : 0,
+      "CloudServicesAnalyticsiCDPKeybagRecoveryKey-success" : 5,
+      "CloudServicesAnalyticsiCDPKeybagRecoveryKey-softfail" : 0,
+      "lastUploadTime" : 1586613671924,
+      "product" : "Mac OS X",
+      "CloudServicesBackupWithChangesFull-success" : 7,
+      "CloudServicesSetConfirmedManifest-success" : 9,
+      "CloudServicesSetConfirmedManifest-softfail" : 0,
+      "soft_failure_count" : 0,
+      "CloudServicesiCloudIdentity-success" : 5,
+      "CloudServicesBackupWithChangesIncremental-success" : 3,
+      "CloudServicesBackupWithChangesIncremental-softfail" : 0
+    }
+  ]
+}
