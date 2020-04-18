@@ -38,6 +38,7 @@
 		94EF62BC242E8C2C006BFB4F /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF62BB242E8C2C006BFB4F /* Parsing.swift */; };
 		94EF62BE242E8FEE006BFB4F /* StatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF62BD242E8FEE006BFB4F /* StatesView.swift */; };
 		FA1F78C5243A394600FFC39F /* USTotals.json in Resources */ = {isa = PBXBuildFile; fileRef = FA1F78C4243A394600FFC39F /* USTotals.json */; };
+		FA78982D244B664C0060993E /* ErrorLog.json in Resources */ = {isa = PBXBuildFile; fileRef = FA78982C244B664C0060993E /* ErrorLog.json */; };
 		FAD586D4243A889200718C56 /* USInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD586D3243A889200718C56 /* USInfoViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		94EF62BB242E8C2C006BFB4F /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
 		94EF62BD242E8FEE006BFB4F /* StatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesView.swift; sourceTree = "<group>"; };
 		FA1F78C4243A394600FFC39F /* USTotals.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = USTotals.json; sourceTree = "<group>"; };
+		FA78982C244B664C0060993E /* ErrorLog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ErrorLog.json; sourceTree = "<group>"; };
 		FAD586D3243A889200718C56 /* USInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USInfoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +223,7 @@
 				9442AFDD243041FC008E2602 /* PressInfo.json */,
 				94DD8FBB2432D81E003EC554 /* StateDaily.json */,
 				FA1F78C4243A394600FFC39F /* USTotals.json */,
+				FA78982C244B664C0060993E /* ErrorLog.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				9442AFDC243041CB008E2602 /* StateInfo.json in Resources */,
 				9442AFD4242F80EC008E2602 /* States.json in Resources */,
 				94DD8FBC2432D81E003EC554 /* StateDaily.json in Resources */,
+				FA78982D244B664C0060993E /* ErrorLog.json in Resources */,
 				9442AFDE243041FC008E2602 /* PressInfo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
