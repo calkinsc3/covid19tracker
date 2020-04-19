@@ -16,21 +16,14 @@ struct StateInfoView: View {
     
     var body: some View {
         NavigationView {
-            
             VStack {
-//                Toggle(isOn: $userData.showWatchedOnly) {
-//                    Text("Watched")
-//                }
-//                .padding()
-                
                 List(self.statesInfoViewModel.stateInfo) { stateInfo in
                     NavigationLink(destination: StateWebController(urlRequest: stateInfo.urlRequest), label: {
                         StateInfoCellView(stateInfo: stateInfo)
                     })
-                    .navigationBarTitle("State Source")
+                    .navigationBarTitle("State Sources")
                 }
             }
-            
         }
     }
 }

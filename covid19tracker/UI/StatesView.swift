@@ -53,7 +53,7 @@ struct StatesView: View {
         Button(action: {
             self.showingUSTotals.toggle()
         }) {
-            Image(systemName: "sum")
+            Text("US Totals").font(.body)
         }
     }
     
