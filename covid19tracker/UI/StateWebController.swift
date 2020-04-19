@@ -32,13 +32,14 @@ struct StateWebController: UIViewControllerRepresentable {
     
     class StateInfoViewController : UIViewController {
         
-        lazy var webView = WKWebView(frame: .zero)
+        lazy var webView = WKWebView()
         lazy var progressBar = UIProgressView(progressViewStyle: .default)
         
         override func viewDidLoad() {
             super.viewDidLoad()
             
             self.webView.frame = self.view.frame
+            self.webView.contentMode = .scaleToFill
             self.view.addSubview(self.webView)
             
             //add progress bar
