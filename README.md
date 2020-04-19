@@ -6,8 +6,7 @@
  There is still a lot of work to be done on this app. Wish list:
  1. Pull to refresh functionality
  2. CoreLocation based on watched states
- 3. Loading spinner for WKWebView
- 4. Graph showing the curve of postive cases
+ 3. Graph showing the curve of postive cases
  
  I plan to get to these over the coming days.
  
