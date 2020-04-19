@@ -15,7 +15,7 @@ struct StateDetailView: View {
     
     @ObservedObject var statesViewModel = StatesViewModel()
     
-    @State var givenState: StateData
+    var givenState: StateData
     
     var stateIndex: Int {
         userData.statesLookup.firstIndex(where: {$0.abbreviation == givenState.state})!
@@ -32,24 +32,8 @@ struct StateDetailView: View {
                     Text("Positive: \(givenState.positive ?? 0)")
                     Text("Total: \(givenState.totalTestResults)")
                 }
-                Spacer()
-                Button(action: {
-                    self.userData.statesLookup[self.stateIndex].isFavorite.toggle()
-                }) {
-                    if self.userData.statesLookup[self.stateIndex].isFavorite {
-                        Image(systemName: "star.fill")
-                            .imageScale(.medium)
-                            .foregroundColor(.yellow)
-                    } else {
-                        Image(systemName: "star")
-                            .imageScale(.medium)
-                            .foregroundColor(.gray)
-                    }
-                }
             }
             .padding()
-            
-            
             Divider()
             Text("Deaths: \(givenState.death ?? 0)")
             Divider()
@@ -92,7 +76,6 @@ struct StateDailyCell: View {
                 .font(.subheadline)
             }
             Text(dailyStateData.recovered != nil ? "Recoveries: \(dailyStateData.recovered ?? 0)" : "")
-            
         }
     }
 }

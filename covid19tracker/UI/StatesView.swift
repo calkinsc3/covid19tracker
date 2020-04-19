@@ -61,24 +61,11 @@ struct StatesView: View {
         NavigationView {
             VStack {
                 Divider()
-//                Toggle(isOn: $userData.showWatchedOnly) {
-//                    Text("Watched")
-//                }
-                .padding()
-                if userData.showWatchedOnly {
-                    List(self.statesViewModel.stateResults.filter({$0.isFavorite})) { state in
-                        NavigationLink(destination: StateDetailView(givenState: state)) {
-                            StateCellView(state: state).environmentObject(self.userData)
-                        }
-                    }
-                } else {
-                   List(self.statesViewModel.stateResults) { state in
-                        NavigationLink(destination: StateDetailView(givenState: state)) {
-                            StateCellView(state: state).environmentObject(self.userData)
-                        }
+                List(self.statesViewModel.stateResults) { state in
+                    NavigationLink(destination: StateDetailView(givenState: state)) {
+                        StateCellView(state: state).environmentObject(self.userData)
                     }
                 }
-                
             }
             .navigationBarTitle("States")
             .navigationBarItems(leading: self.usTotalsSheetButton, trailing: self.sortActionSheetButton)
@@ -117,19 +104,12 @@ struct StateCellView: View {
                         .font(.body)
                 }
             }
-            if userData.statesLookup.filter({$0.abbreviation == state.state}).first?.isFavorite ?? false {
-                Image(systemName: "star.fill")
-                    .imageScale(.medium)
-                    .foregroundColor(.yellow)
-            }
-            
         }
-        
     }
 }
 
 struct StatesView_Previews: PreviewProvider {
     static var previews: some View {
-            StatesView()
+        StatesView()
     }
 }

@@ -38,7 +38,6 @@ struct StateWebController: UIViewControllerRepresentable {
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            
             self.webView.frame = self.view.frame
             self.view.addSubview(self.webView)
             
@@ -55,7 +54,6 @@ struct StateWebController: UIViewControllerRepresentable {
             self.progressBar.progress = 0.1
             webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
             
-            
         }
         
         override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -63,8 +61,6 @@ struct StateWebController: UIViewControllerRepresentable {
                 self.progressBar.progress = Float(self.webView.estimatedProgress)
             }
         }
-        
-        
     }
 }
 
