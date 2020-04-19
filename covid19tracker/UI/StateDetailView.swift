@@ -62,15 +62,19 @@ struct StateDailyCell: View {
                 VStack (alignment: .leading) {
                     Text("Increases")
                         .font(.headline)
-                    Text("Hospitalized: \(dailyStateData.hospitalizedIncrease ?? 0)")
+                    if dailyStateData.hospitalized ?? 0 != 0 {
+                        Text("Hospitalized: \(dailyStateData.hospitalizedIncrease ?? 0)")
+                    }
                     Text("Deaths: \(dailyStateData.deathIncrease ?? 0)")
                 }
                 .font(.subheadline)
-                //Divider()
+                
                 VStack (alignment: .leading) {
                     Text("Hospitals")
                         .font(.headline)
-                    Text("Current: \(dailyStateData.hospitalizedCurrently ?? 0)")
+                    if dailyStateData.hospitalized ?? 0 != 0 {
+                        Text("Current: \(dailyStateData.hospitalizedCurrently ?? 0)")
+                    }
                     Text("In ICU: \(dailyStateData.inIcuCurrently ?? 0)")
                 }
                 .font(.subheadline)

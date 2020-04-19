@@ -9,14 +9,32 @@
 import SwiftUI
 
 struct AboutView: View {
+    
+    @State private var showingCOVIDProject = false
+    
     var body: some View {
         VStack {
+            
             Image("COVIDIcon")
-            .resizable()
-                .frame(width: 130, height: 130, alignment: .center)
-            Text("Thanks to all that downloaded this app")
+                .resizable()
+                .frame(width: 150, height: 150, alignment: .center)
+            Text("Data for this app is provided by: ")
                 .font(.caption)
+            Button(action: {
+                self.showingCOVIDProject.toggle()
+            }) {
+                Text("The COVID Tracking Project")
+            }
+            
+            Text("The app is meant to inform the user.")
+            Text("The data provided in not diagnostic data.")
+            
         }
+        .font(.body)
+        .padding()
+        .sheet(isPresented: $showingCOVIDProject, content: {
+            StateWebController(urlRequest: URLRequest(url: URL(string: "https://covidtracking.com")!, cachePolicy: .returnCacheDataElseLoad))
+        })
     }
 }
 
