@@ -15,7 +15,7 @@ struct StatePressView: View {
     var body: some View {
         NavigationView {
             List(self.statePressViewModel.statePressResult) { press in
-                NavigationLink(destination: StatesWebView(urlRequest: press.urlRequest)) {
+                NavigationLink(destination: StateWebController(urlRequest: press.urlRequest)) {
                     StatePressCellView(statePressInfo: press)
                         .padding()
                 }

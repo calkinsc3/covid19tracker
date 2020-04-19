@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,7 +41,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="PrimaryBackground"/>
                         <constraints>
                             <constraint firstItem="Qmj-RA-wzr" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9FH-r2-8T3"/>
                             <constraint firstItem="Qmj-RA-wzr" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="HQm-6a-Qd6"/>
@@ -57,5 +58,8 @@
     </scenes>
     <resources>
         <image name="COVIDIcon" width="130" height="130"/>
+        <namedColor name="PrimaryBackground">
+            <color red="0.96899998188018799" green="0.84700000286102295" blue="0.64999997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

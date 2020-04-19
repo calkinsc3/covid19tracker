@@ -127,7 +127,7 @@ struct StateInfoElement: Codable, Identifiable {
         guard let url = URL(string: self.url) else {
             return nil
         }
-        return URLRequest(url: url)
+        return URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
     }
     
     static let `placeholder` = Self(kind: "url", name: "Ohio", url: "https://coronavirus.ohio.gov/wps/portal/gov/covid-19/", stateId: "OH", filter: nil)

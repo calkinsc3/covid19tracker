@@ -26,7 +26,6 @@ struct ContentView: View {
                     }
             }
             .tag(0)
-            
             //MARK:- Info View
             StateInfoView()
                 .font(.title)

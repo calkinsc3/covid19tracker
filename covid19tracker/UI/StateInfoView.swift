@@ -24,7 +24,7 @@ struct StateInfoView: View {
 //                .padding()
                 
                 List(self.statesInfoViewModel.stateInfo) { stateInfo in
-                    NavigationLink(destination: StatesWebView(urlRequest: stateInfo.urlRequest), label: {
+                    NavigationLink(destination: StateWebController(urlRequest: stateInfo.urlRequest), label: {
                         StateInfoCellView(stateInfo: stateInfo)
                     })
                     .navigationBarTitle("State Source")
