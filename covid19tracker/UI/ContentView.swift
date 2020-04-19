@@ -16,7 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selectedTab){
-            //MARK:- StateView
+            //MARK:- State Numbers
             StatesView()
                 .font(.title)
                 .tabItem {
@@ -26,7 +26,7 @@ struct ContentView: View {
                     }
             }
             .tag(0)
-            //MARK:- Info View
+            //MARK:- State Sources
             StateInfoView()
                 .font(.title)
                 .tabItem {
@@ -37,13 +37,13 @@ struct ContentView: View {
             }
             .tag(1)
             
-            //MARK:- Vids
-            StatePressView()
+            //MARK:- About
+            AboutView()
                 .font(.title)
                 .tabItem {
                     VStack {
-                        Image(systemName: "tray.and.arrow.down")
-                        Text("Press")
+                        Image(systemName: "a.circle")
+                        Text("About")
                     }
             }
             .tag(2)
