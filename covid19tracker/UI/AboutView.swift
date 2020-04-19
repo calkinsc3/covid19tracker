@@ -24,10 +24,12 @@ struct AboutView: View {
                 self.showingCOVIDProject.toggle()
             }) {
                 Text("The COVID Tracking Project")
+                    .font(.subheadline)
             }
             
             Text("The app is meant to inform the user.")
-            Text("The data provided in not diagnostic data.")
+            Text("The data provided in not diagnostic.")
+            Text("Stay safe and be healthy.")
             
         }
         .font(.body)

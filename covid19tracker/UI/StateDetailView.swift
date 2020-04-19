@@ -33,7 +33,6 @@ struct StateDetailView: View {
                     Text("Total: \(givenState.totalTestResults)")
                 }
             }
-            .padding()
             Divider()
             Text("Deaths: \(givenState.death ?? 0)")
             Divider()
