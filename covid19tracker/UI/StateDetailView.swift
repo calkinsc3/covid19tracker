@@ -15,6 +15,8 @@ struct StateDetailView: View {
     
     @ObservedObject var statesViewModel = StatesViewModel()
     
+    @State private var showingBarGraph = false
+    
     var givenState: StateData
     
     var stateIndex: Int {
@@ -27,10 +29,13 @@ struct StateDetailView: View {
             Divider()
             
             HStack {
-                VStack {
-                    Text("Negative: \(givenState.negative ?? 0)")
-                    Text("Positive: \(givenState.positive ?? 0)")
-                    Text("Total: \(givenState.totalTestResults)")
+                NavigationLink(destination: BarGraphView(), isActive: $showingBarGraph) {
+                    VStack {
+                        Text("Negative: \(givenState.negative ?? 0)")
+                        Text("Positive: \(givenState.positive ?? 0)")
+                        Text("Total: \(givenState.totalTestResults)")
+                        
+                    }
                 }
             }
             Divider()
@@ -55,6 +60,7 @@ struct StateDailyCell: View {
     let dailyStateData : StateDailyDatum
     
     var body: some View {
+        
         VStack (alignment: .center) {
             Text("Date: \(dailyStateData.dateCheckedDisplay ?? "Unknown")")
             HStack {
