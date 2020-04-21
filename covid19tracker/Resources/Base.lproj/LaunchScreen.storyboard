@@ -57,7 +57,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="COVIDIcon" width="130" height="130"/>
+        <image name="COVIDIcon" width="58" height="58"/>
         <namedColor name="PrimaryBackground">
             <color red="0.96899998188018799" green="0.84700000286102295" blue="0.64999997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
