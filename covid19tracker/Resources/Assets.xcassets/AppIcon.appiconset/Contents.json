@@ -13,19 +13,19 @@
       "size" : "20x20"
     },
     {
-      "filename" : "Covidicon-4.png",
+      "filename" : "Covidicon-2.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "Covidicon-5.png",
+      "filename" : "Covidicon-3.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "Covidicon@2x.png",
+      "filename" : "Covidicon@2x80.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
@@ -37,7 +37,7 @@
       "size" : "40x40"
     },
     {
-      "filename" : "Covidicon@2x-1.png",
+      "filename" : "Covidicon@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
@@ -49,37 +49,37 @@
       "size" : "60x60"
     },
     {
-      "filename" : "Covidicon-6.png",
+      "filename" : "Covidicon-4.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
     },
     {
-      "filename" : "Covidicon-2.png",
+      "filename" : "Covidicon-5.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"
+    },
+    {
+      "filename" : "Covidicon-6.png",
+      "idiom" : "ipad",
+      "scale" : "1x",
+      "size" : "29x29"
+    },
+    {
+      "filename" : "Covidicon@2x-1.png",
+      "idiom" : "ipad",
+      "scale" : "2x",
+      "size" : "29x29"
     },
     {
       "filename" : "Covidicon-7.png",
       "idiom" : "ipad",
       "scale" : "1x",
-      "size" : "29x29"
-    },
-    {
-      "filename" : "Covidicon@2x-3.png",
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "29x29"
-    },
-    {
-      "filename" : "Covidicon-3.png",
-      "idiom" : "ipad",
-      "scale" : "1x",
       "size" : "40x40"
     },
     {
-      "filename" : "Covidicon@2x-2.png",
+      "filename" : "Covidicon@2x80-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"
@@ -91,7 +91,7 @@
       "size" : "76x76"
     },
     {
-      "filename" : "Covidicon@2x-4.png",
+      "filename" : "Covidicon@2x-2.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
