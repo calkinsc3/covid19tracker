@@ -24,12 +24,16 @@ struct StateDetailView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Last Update: \(givenState.asOfDate ?? "")")
-            Divider()
+        ZStack {
+
+            Color("PrimaryBackground").edgesIgnoringSafeArea(.all)
             
-            HStack {
-                NavigationLink(destination: BarGraphView(), isActive: $showingBarGraph) {
+            VStack {
+                Text("Last Update: \(givenState.asOfDate ?? "")")
+                Divider()
+                
+                HStack {
+                    
                     VStack {
                         Text("Negative: \(givenState.negative ?? 0)")
                         Text("Positive: \(givenState.positive ?? 0)")
@@ -37,17 +41,19 @@ struct StateDetailView: View {
                         
                     }
                 }
+                Divider()
+                Text("Deaths: \(givenState.death ?? 0)")
+                Divider()
+                
+                //            List(self.statesViewModel.stateDailyResults) { dailyData in
+                //                StateDailyCell(dailyStateData: dailyData)
+                //            }
+                
+                BarGraphView(barGraphTitle: "Daily Increases", pickerSelection: 0, barValues: self.statesViewModel.barGraphValues)
+                
             }
-            Divider()
-            Text("Deaths: \(givenState.death ?? 0)")
-            Divider()
-            
-            List(self.statesViewModel.stateDailyResults) { dailyData in
-                StateDailyCell(dailyStateData: dailyData)
-            }
-            
-            
         }
+        
         .navigationBarTitle(givenState.stateName ?? "")
         .onAppear {
             self.statesViewModel.fetchStateDailyResults(forState: self.givenState.state)
@@ -91,6 +97,10 @@ struct StateDailyCell: View {
 
 struct StateDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        StateDailyCell(dailyStateData: StateDailyDatum.placeholder)
+        Group {
+            StateDetailView(givenState: StateData.placeholder)
+            StateDailyCell(dailyStateData: StateDailyDatum.placeholder)
+        }
+        
     }
 }

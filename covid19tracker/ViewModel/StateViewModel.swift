@@ -17,6 +17,10 @@ class StatesViewModel: ObservableObject {
     @Published var stateResults : StateModels = []
     @Published var stateDailyResults: StateDailyData = []
     @Published var watchStateResults: StateModels = []
+    @Published var barGraphValues: [[CGFloat]] = [
+        [121.0,153.0,147.0,154.0,170.0,154.0,166.0,127.0,87.0],
+        [41.0,21.0,14.0,23.0,32.0, 30.0,42.0,56.0,19.0],
+        [12.0,10.0,9.0,6.0,8.0,15.0,12.0,16.0,10.0]]
     
     private let stateFetcher = StateItemsFetcher()
     private var disposable = Set<AnyCancellable>()
@@ -73,10 +77,17 @@ class StatesViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] stateDailyModels in
                 guard let self = self else { return }
-                self.stateDailyResults = stateDailyModels.sorted(by:{$0.dateChecked > $1.dateChecked})
+                let sortedDailyModels = stateDailyModels.sorted(by:{$0.dateChecked > $1.dateChecked})
+                self.stateDailyResults = sortedDailyModels
+                
+                //gather number for graph results
+                let positiveIncrease = Array(sortedDailyModels.compactMap({$0.positiveIncrease}).map({CGFloat($0)}).prefix(9))
+                let hospitalIncrease = Array(sortedDailyModels.compactMap({$0.hospitalizedIncrease}).map({CGFloat($0)}).prefix(9))
+                let deathIncreases = Array(sortedDailyModels.compactMap({$0.deathIncrease}).map({CGFloat($0)}).prefix(9))
+                
+                self.barGraphValues = [positiveIncrease, hospitalIncrease, deathIncreases]
+                
             })
             .store(in: &disposable)
     }
-    
-    
 }

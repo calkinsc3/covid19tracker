@@ -12,6 +12,8 @@ import SwiftUI
 
 struct BarGraphView: View {
     
+    var barGraphTitle = "Increases"
+    
     @State var pickerSelection = 0
     @State var barValues: [[CGFloat]] = [
         [5,150,50,100,200,110,30,170,50],
@@ -24,12 +26,12 @@ struct BarGraphView: View {
             Color("PrimaryBackground").edgesIgnoringSafeArea(.all)
             
             VStack {
-                Text("Bar Charts")
-                    .font(.largeTitle)
+                Text(self.barGraphTitle)
+                    .font(.title)
                 Picker(selection: $pickerSelection, label: Text("Stats")) {
                     Text("Positive").tag(0)
-                    Text("Deaths").tag(1)
-                    Text("Recoveries").tag(2)
+                    Text("Hospitalized").tag(1)
+                    Text("Death").tag(2)
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal, 10)
@@ -37,7 +39,7 @@ struct BarGraphView: View {
                 
                 HStack(alignment: .center, spacing: 10) {
                     ForEach(barValues[self.pickerSelection], id:\.self) { data in
-                        BarView(value: data, cornerRadius: CGFloat(integerLiteral: 10*self.pickerSelection))
+                        BarView(value: data, cornerRadius: CGFloat(integerLiteral: 10 * self.pickerSelection))
                     }
                 }
                 .padding(.top, 24)
@@ -57,11 +59,13 @@ struct BarView: View {
             ZStack (alignment: .bottom) {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .frame(width: 30, height: 200)
-                    .foregroundColor(Color("BarForeground"))
+                    .foregroundColor(Color("BarBackground"))
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .frame(width: 30, height: value)
-                    .foregroundColor(Color("BarBackground"))
-            }.padding(.bottom, 8)
+                    .foregroundColor(Color("BarForeground"))
+                
+            }
+            .padding(.bottom, 8)
         }
     }
 }

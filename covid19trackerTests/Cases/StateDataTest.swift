@@ -46,6 +46,8 @@ class StateDataTests: XCTestCase {
         
     }
     
+    
+    
     func testStateDailyData() throws {
         
         let stateDailyData = self.getMockData(forResource: "StateDaily")
@@ -57,6 +59,15 @@ class StateDataTests: XCTestCase {
                 self.jsonDecoder.dateDecodingStrategy = .iso8601
                 let stateDailyData = try self.jsonDecoder.decode(StateDailyData.self, from: givenStateData)
                 XCTAssertTrue(stateDailyData.count == 38, "State count should be 27. Count is \(stateDailyData.count)")
+                
+                let postiveIncrease = Array(stateDailyData.compactMap({$0.positiveIncrease}).map({CGFloat($0)}).prefix(10))
+                let hospitalizedIncrease = Array(stateDailyData.compactMap({$0.hospitalizedIncrease}).map({CGFloat($0)}).prefix(10))
+                let deathIncrease = Array(stateDailyData.compactMap({$0.deathIncrease}).map({CGFloat($0)}).prefix(10))
+                
+                let graphicResults = [postiveIncrease, hospitalizedIncrease, deathIncrease]
+                
+                XCTAssertTrue(graphicResults.count == 3, "Graphic Result should 3")
+                XCTAssertTrue(graphicResults.first?.count == 10, "Graph result first element count should be 10")
                 
                 if let nyNumbers = stateDailyData.first {
                     XCTAssertTrue(nyNumbers.positive == 170512, "WI Positive Number should be 92381")
