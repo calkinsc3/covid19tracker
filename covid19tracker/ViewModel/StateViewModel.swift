@@ -17,13 +17,13 @@ class StatesViewModel: ObservableObject {
     @Published var stateResults : StateModels = []
     @Published var stateDailyResults: StateDailyData = []
     @Published var watchStateResults: StateModels = []
-    @Published var barGraphValues: [[CGFloat]] = [
-        [121.0,153.0,147.0,154.0,170.0,154.0,166.0,127.0,87.0],
-        [41.0,21.0,14.0,23.0,32.0, 30.0,42.0,56.0,19.0],
-        [12.0,10.0,9.0,6.0,8.0,15.0,12.0,16.0,10.0]]
+    @Published var barGraphValues: [[CGFloat]] = [[]]
+    @Published var barGraphAvgValues: [CGFloat] = []
     
     private let stateFetcher = StateItemsFetcher()
     private var disposable = Set<AnyCancellable>()
+    
+    private let barGraphDataSize = 9
     
     init() {
         self.fetchStatesResults()
@@ -81,11 +81,17 @@ class StatesViewModel: ObservableObject {
                 self.stateDailyResults = sortedDailyModels
                 
                 //gather number for graph results
-                let positiveIncrease = Array(sortedDailyModels.compactMap({$0.positiveIncrease}).map({CGFloat($0)}).prefix(9))
-                let hospitalIncrease = Array(sortedDailyModels.compactMap({$0.hospitalizedIncrease}).map({CGFloat($0)}).prefix(9))
-                let deathIncreases = Array(sortedDailyModels.compactMap({$0.deathIncrease}).map({CGFloat($0)}).prefix(9))
+                let positiveIncrease = Array(sortedDailyModels.compactMap({$0.positiveIncrease}).map({CGFloat($0)}).prefix(self.barGraphDataSize))
+                let hospitalIncrease = Array(sortedDailyModels.compactMap({$0.hospitalizedIncrease}).map({CGFloat($0)}).prefix(self.barGraphDataSize))
+                let deathIncreases = Array(sortedDailyModels.compactMap({$0.deathIncrease}).map({CGFloat($0)}).prefix(self.barGraphDataSize))
+                
+                //average value to get the height of the bar graph
+                let postiveBarAverage = positiveIncrease.reduce(0.0) {$0 + $1/CGFloat(self.barGraphDataSize)}
+                let hospitalBarAverage = hospitalIncrease.reduce((0.0), {$0 + $1/CGFloat(self.barGraphDataSize)})
+                let deathBarAverage = deathIncreases.reduce((0.0), {$0 + $1/CGFloat(self.barGraphDataSize)})
                 
                 self.barGraphValues = [positiveIncrease, hospitalIncrease, deathIncreases]
+                self.barGraphAvgValues = [postiveBarAverage, hospitalBarAverage, deathBarAverage]
                 
             })
             .store(in: &disposable)

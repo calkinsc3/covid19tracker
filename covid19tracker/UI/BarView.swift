@@ -12,7 +12,8 @@ import SwiftUI
 
 struct BarGraphView: View {
     
-    var barGraphTitle = "Increases"
+    @Binding var bindedBarValues : [[CGFloat]]
+    @Binding var bindedBarAverageValues : [CGFloat]
     
     @State var pickerSelection = 0
     @State var barValues: [[CGFloat]] = [
@@ -26,7 +27,7 @@ struct BarGraphView: View {
             Color("PrimaryBackground").edgesIgnoringSafeArea(.all)
             
             VStack {
-                Text(self.barGraphTitle)
+                Text("Daily Increases")
                     .font(.title)
                 Picker(selection: $pickerSelection, label: Text("Stats")) {
                     Text("Positive").tag(0)
@@ -36,10 +37,9 @@ struct BarGraphView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal, 10)
                 
-                
                 HStack(alignment: .center, spacing: 10) {
-                    ForEach(barValues[self.pickerSelection], id:\.self) { data in
-                        BarView(value: data, cornerRadius: CGFloat(integerLiteral: 10 * self.pickerSelection))
+                    ForEach(self.barValues[self.pickerSelection], id:\.self) { data in
+                        BarView(value: data, cornerRadius: CGFloat(integerLiteral: (10 * self.pickerSelection)), barHeight: 200)
                     }
                 }
                 .padding(.top, 24)
@@ -53,6 +53,7 @@ struct BarView: View {
     
     var value: CGFloat
     var cornerRadius: CGFloat
+    var barHeight: CGFloat
     
     var body: some View {
         VStack {
@@ -70,12 +71,19 @@ struct BarView: View {
     }
 }
 
-struct BarView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            BarGraphView()
-            BarView(value: 45, cornerRadius: 4)
-        }
-        
-    }
-}
+//struct BarView_Previews: PreviewProvider {
+//
+//    let barData : [[CGFloat]] = [[5.0,150.0,50.0,100.0,200.0,110.0,30.0,170.0,50.0],
+//    [200.0,110.0,30.0,170.0,50.0, 100.0,100.0,100.0,200.0],
+//    [10.0,20.0,50.0,100.0,120.0,90.0,180.0,200.0,40.0]]
+//
+//    static var previews: some View {
+//        Group {
+//
+//            BarGraphView(bindedBarValues: barData)
+//
+//                BarView(value: 45, cornerRadius: 4, barHeight: 200)
+//        }
+//
+//    }
+//}

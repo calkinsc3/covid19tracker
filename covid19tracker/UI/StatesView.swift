@@ -58,14 +58,18 @@ struct StatesView: View {
     }
     
     var body: some View {
+        
         NavigationView {
-            VStack {
+            
+            VStack(alignment: .center) {
                 Divider()
+                
                 List(self.statesViewModel.stateResults) { state in
                     NavigationLink(destination: StateDetailView(givenState: state)) {
                         StateCellView(state: state).environmentObject(self.userData)
                     }
                 }
+                
             }
             .navigationBarTitle("States")
             .navigationBarItems(leading: self.usTotalsSheetButton, trailing: self.sortActionSheetButton)
@@ -104,12 +108,17 @@ struct StateCellView: View {
                         .font(.body)
                 }
             }
+            .listRowBackground(Color("PrimaryBackground"))
         }
     }
 }
 
 struct StatesView_Previews: PreviewProvider {
     static var previews: some View {
-        StatesView()
+        Group {
+            StatesView()
+            StateCellView(state: StateData.placeholder)
+        }
+        
     }
 }

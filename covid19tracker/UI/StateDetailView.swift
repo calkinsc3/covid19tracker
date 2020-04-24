@@ -45,11 +45,7 @@ struct StateDetailView: View {
                 Text("Deaths: \(givenState.death ?? 0)")
                 Divider()
                 
-                //            List(self.statesViewModel.stateDailyResults) { dailyData in
-                //                StateDailyCell(dailyStateData: dailyData)
-                //            }
-                
-                BarGraphView(barGraphTitle: "Daily Increases", pickerSelection: 0, barValues: self.statesViewModel.barGraphValues)
+                BarGraphView(bindedBarValues: self.$statesViewModel.barGraphValues, bindedBarAverageValues: self.$statesViewModel.barGraphAvgValues)
                 
             }
         }
