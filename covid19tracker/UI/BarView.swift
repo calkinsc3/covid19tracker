@@ -9,7 +9,7 @@
 import SwiftUI
 
 
-
+//MARK:- BarGraphic
 struct BarGraphView: View {
     
     @Binding var bindedBarValues : [[CGFloat]]
@@ -49,6 +49,7 @@ struct BarGraphView: View {
     }
 }
 
+//MARK:- BarView
 struct BarView: View {
     
     var value: CGFloat

@@ -29,6 +29,7 @@ class StatesViewModel: ObservableObject {
         self.fetchStatesResults()
     }
     
+    //MARK:- State Results
     private func fetchStatesResults() {
         
         stateFetcher.stateItems()
@@ -56,6 +57,7 @@ class StatesViewModel: ObservableObject {
         
     }
     
+    //MARK:- Daily Results
     func fetchStateDailyResults(forState state: String) {
         
         stateFetcher.stateDailyItems(forState: state)
