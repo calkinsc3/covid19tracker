@@ -87,6 +87,12 @@ class StatesViewModel: ObservableObject {
                 let hospitalIncrease = Array(sortedDailyModels.compactMap({$0.hospitalizedIncrease}).map({CGFloat($0)}).prefix(self.barGraphDataSize))
                 let deathIncreases = Array(sortedDailyModels.compactMap({$0.deathIncrease}).map({CGFloat($0)}).prefix(self.barGraphDataSize))
                 
+//                let positiveIncreaseViewModel = Array(sortedDailyModels
+//                    .compactMap({CapsuleViewModel(value: "\($0.positiveIncrease)", valueName: "\($0.date)")}))
+//                    .map({String($0.valueName.suffix(4))})
+//                    .prefix(self.barGraphDataSize)
+                
+                
                 //average value to get the height of the bar graph
                 let postiveBarAverage = positiveIncrease.reduce(0.0) {$0 + $1/CGFloat(self.barGraphDataSize)}
                 let hospitalBarAverage = hospitalIncrease.reduce((0.0), {$0 + $1/CGFloat(self.barGraphDataSize)})
@@ -98,4 +104,9 @@ class StatesViewModel: ObservableObject {
             })
             .store(in: &disposable)
     }
+}
+
+struct CapsuleViewModel {
+    let value: String
+    let valueName: String
 }

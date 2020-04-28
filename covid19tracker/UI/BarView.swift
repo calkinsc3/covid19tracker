@@ -72,6 +72,37 @@ struct BarView: View {
     }
 }
 
+//MARK:- CapsuleView
+struct CapsuleBar: View {
+    
+    var value: Int
+    var maxValue: Int
+    var width: CGFloat
+    var valueName: String
+    var capsuleColor: Color
+    
+    var body: some View {
+        
+        VStack {
+            
+            Text("\(value)")
+            ZStack(alignment: .bottom) {
+                Capsule()
+                    .fill(Color.gray)
+                    .opacity(0.1)
+                    .frame(width: width, height: 400)
+                Capsule()
+                    .fill(Color.red)
+                    .frame(width: width, height: CGFloat(value) / CGFloat(maxValue) * 400)
+                    .animation(.easeOut(duration: 0.5))
+            }
+            
+            Text("\(valueName)")
+        }
+    }
+}
+
+
 //struct BarView_Previews: PreviewProvider {
 //
 //    let barData : [[CGFloat]] = [[5.0,150.0,50.0,100.0,200.0,110.0,30.0,170.0,50.0],
