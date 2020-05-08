@@ -34,8 +34,8 @@ class StateDataTests: XCTestCase {
                 XCTAssertTrue(stateModels.count == 56, "State count should be 56. Count is \(stateModels.count)")
                 
                 if let wisconsinNumbers = stateModels.filter ({$0.state == "WI"}).first {
-                    XCTAssertTrue(wisconsinNumbers.positive == 989, "WI Positive Number should be 989")
-                    XCTAssertTrue(wisconsinNumbers.negative == 15232, "WI Negative Number should be 15232")
+                    XCTAssertTrue(wisconsinNumbers.positive == 9215, "WI Positive Number should be 9215")
+                    XCTAssertTrue(wisconsinNumbers.negative == 93035, "WI Negative Number should be 93035")
                 }
                 
                 
