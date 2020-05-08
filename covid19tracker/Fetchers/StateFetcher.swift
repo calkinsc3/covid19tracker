@@ -99,11 +99,16 @@ private extension StateItemsFetcher {
     struct COVID19_API {
         static let schema = "https"
         static let host = "covidtracking.com"
-        static let path = "/api/states"
-        static let infoPath = "/api/urls"
-        static let pressPath = "/api/press"
-        static let dailyPath = "\(path)/daily"
-        static let usTotalsPath = "/api/us"
+        static let version = "v1"
+        static let basePath = "/api/\(version)"
+        
+        static let statesBasePath = "\(basePath)/states"
+        static let stateCurrentPath = "\(statesBasePath)/current.json"
+        
+        static let infoPath = "\(basePath)/urls.json"
+        static let pressPath = "\(basePath)/press.json"
+        static let dailyPath = "\(basePath)/daily.json"
+        static let usTotalsPath = "\(basePath)/us/current.json"
     }
     
     func makeCOVIDStateComponents() -> URLComponents {
@@ -112,7 +117,7 @@ private extension StateItemsFetcher {
         
         components.scheme = COVID19_API.schema
         components.host = COVID19_API.host
-        components.path = COVID19_API.path
+        components.path = COVID19_API.stateCurrentPath
         
         return components
     }
@@ -145,8 +150,7 @@ private extension StateItemsFetcher {
         
         components.scheme = COVID19_API.schema
         components.host = COVID19_API.host
-        components.path = COVID19_API.dailyPath
-        components.queryItems = [URLQueryItem(name: "state", value: state)]
+        components.path = "\(COVID19_API.statesBasePath)/\(state)/daily.json"
         
         return components
     }
