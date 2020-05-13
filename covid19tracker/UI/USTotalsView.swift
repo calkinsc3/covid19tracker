@@ -42,7 +42,8 @@ struct USTotalsView: View {
                 Text("Hospitalized: \(usInfoViewModel.usInfoResult?.formattedHospitalized ?? "0")")
                 Divider()
                 Text("Deaths: \(usInfoViewModel.usInfoResult?.forattedDeath ?? "0")")
-                Spacer()
+//                Text("Tested: \(usInfoViewModel.usInfoResult?.totalUSPercentage ?? "0")")
+
             }
         }
         .font(.title)
