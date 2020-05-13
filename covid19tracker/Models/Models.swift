@@ -222,4 +222,15 @@ struct USTotal: Codable {
         
         return dateFormatter.string(from: self.datePublished ?? Date())
     }
+    
+    var totalUSPercentage: String? {
+        
+        let usPopulation = 329_641_438
+        let percentageFormatter = NumberFormatter()
+        percentageFormatter.numberStyle = .percent
+        
+        let percentageTested = (usPopulation / self.total) / 100
+        
+        return percentageFormatter.string(from: NSNumber(value: percentageTested))
+    }
 }
