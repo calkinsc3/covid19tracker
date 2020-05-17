@@ -42,8 +42,11 @@ struct USTotalsView: View {
                 Text("Hospitalized: \(usInfoViewModel.usInfoResult?.formattedHospitalized ?? "0")")
                 Divider()
                 Text("Deaths: \(usInfoViewModel.usInfoResult?.forattedDeath ?? "0")")
-//                Text("Tested: \(usInfoViewModel.usInfoResult?.totalUSPercentage ?? "0")")
-
+                Group {
+                    Text("Population: \(usInfoViewModel.usInfoResult?.formattedUSPopulation ?? "Unknown")")
+                    Text("Total Tested: \(usInfoViewModel.usInfoResult?.formattedTotalTestResults ?? "Unknown")")
+                    Text("% of Population: \(usInfoViewModel.usInfoResult?.totalUSPercentage ?? "0")")
+                }
             }
         }
         .font(.title)

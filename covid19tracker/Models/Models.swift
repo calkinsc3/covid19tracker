@@ -177,6 +177,7 @@ struct PressDatum: Codable, Identifiable {
 typealias USTotals = [USTotal]
 
 struct USTotal: Codable {
+    static let usPopulation: Double = 329_641_438
     let positive, negative, pending, hospitalizedCurrently: Int
     let hospitalizedCumulative, inIcuCurrently, inIcuCumulative, onVentilatorCurrently: Int
     let onVentilatorCumulative, recovered: Int
@@ -223,13 +224,26 @@ struct USTotal: Codable {
         return dateFormatter.string(from: self.datePublished ?? Date())
     }
     
+    var formattedUSPopulation: String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value: USTotal.usPopulation))
+    }
+    
+    var formattedTotalTestResults: String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value: self.totalTestResults))
+    }
+    
     var totalUSPercentage: String? {
-        
-        let usPopulation: Double = 329_641_438
         let percentageFormatter = NumberFormatter()
         percentageFormatter.numberStyle = .percent
+        percentageFormatter.minimumIntegerDigits = 1
+        percentageFormatter.maximumIntegerDigits = 4
+        percentageFormatter.maximumFractionDigits = 2
         
-        let percentageTested = (Double(self.total) / usPopulation)
+        let percentageTested = (Double(self.totalTestResults) / USTotal.usPopulation)
         
         return percentageFormatter.string(from: NSNumber(value: percentageTested))
     }
