@@ -46,6 +46,7 @@ struct StateDetailView: View {
                 Divider()
                 if givenState.state == "WI" {
                     Text("\(givenState.wiPopulationTested ?? "") Tested")
+                    Divider()
                 }
                 
                 List(statesViewModel.stateDailyResults) { dailyResults in
