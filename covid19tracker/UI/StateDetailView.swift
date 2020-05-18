@@ -26,7 +26,7 @@ struct StateDetailView: View {
     var body: some View {
         ZStack {
 
-            Color("PrimaryBackground").edgesIgnoringSafeArea(.all)
+            //Color("PrimaryBackground").edgesIgnoringSafeArea(.all)
             
             VStack {
                 Text("Last Update: \(givenState.asOfDate ?? "")")
@@ -44,8 +44,16 @@ struct StateDetailView: View {
                 Divider()
                 Text("Deaths: \(givenState.death ?? 0)")
                 Divider()
+                if givenState.state == "WI" {
+                    Text("\(givenState.wiPopulationTested ?? "") Tested")
+                }
                 
-                BarGraphView(bindedBarValues: self.$statesViewModel.barGraphValues, bindedBarAverageValues: self.$statesViewModel.barGraphAvgValues)
+                List(statesViewModel.stateDailyResults) { dailyResults in
+                    StateDailyCell(dailyStateData: dailyResults)
+                }
+                
+                
+//                BarGraphView(bindedBarValues: self.$statesViewModel.barGraphValues, bindedBarAverageValues: self.$statesViewModel.barGraphAvgValues)
                 
             }
         }

@@ -45,7 +45,7 @@ struct USTotalsView: View {
                 Group {
                     Text("Population: \(usInfoViewModel.usInfoResult?.formattedUSPopulation ?? "Unknown")")
                     Text("Total Tested: \(usInfoViewModel.usInfoResult?.formattedTotalTestResults ?? "Unknown")")
-                    Text("% of Population: \(usInfoViewModel.usInfoResult?.totalUSPercentage ?? "0")")
+                    Text("\(usInfoViewModel.usInfoResult?.totalUSPercentage ?? "0") Tested")
                 }
             }
         }
