@@ -37,6 +37,9 @@ struct StatesView: View {
                         .default(Text("Alphabetically Desc"), action: {
                             self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.stateName ?? "" > $1.stateName ?? ""})
                         }),
+                        .default(Text("Most Tested"), action: {
+                            self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.populationTestedVal ?? 0 > $1.populationTestedVal ?? 0})
+                        }),
                         .cancel(Text("Cancel"))
         ])
     }

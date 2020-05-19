@@ -56,6 +56,16 @@ struct StateData: Codable, Identifiable {
         return numberFormatter.string(from: NSNumber(value:self.death ?? 0))
     }
     
+    var populationTestedVal: Double? {
+        
+        guard let statePopulation = statePopulations.filter({$0.state == self.state}).first else {
+            return nil
+        }
+        
+        return Double(self.totalTestResults) / statePopulation.population
+        
+    }
+    
     var populationTested: String? {
         
         let percentageFormatter = NumberFormatter()
