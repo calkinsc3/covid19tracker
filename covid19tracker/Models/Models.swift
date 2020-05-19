@@ -56,11 +56,7 @@ struct StateData: Codable, Identifiable {
         return numberFormatter.string(from: NSNumber(value:self.death ?? 0))
     }
     
-    var wiPopulationTested: String? {
-        
-        guard self.state == "WI" else {
-            return nil
-        }
+    var populationTested: String? {
         
         let percentageFormatter = NumberFormatter()
         percentageFormatter.numberStyle = .percent
@@ -68,9 +64,13 @@ struct StateData: Codable, Identifiable {
         percentageFormatter.maximumIntegerDigits = 4
         percentageFormatter.maximumFractionDigits = 2
         
-        let wiPopulation: Double = 5851754
+        if let statePopulation = statePopulations.filter({$0.state == self.state}).first?.population {
+            return percentageFormatter.string(from: NSNumber(value: (Double(self.totalTestResults) / statePopulation)))
+        } else {
+            return nil
+        }
         
-        return percentageFormatter.string(from: NSNumber(value: (Double(self.totalTestResults) / wiPopulation)))
+        
     }
     
     static let `placeholder` = Self(state: "WI", positive: 707, positiveScore: 1, negativeScore: 1, negativeRegularScore: 1, commercialScore: 1, grade: .a, score: 4, negative: 11583, pending: nil, hospitalized: nil, death: 8, total: 12290, lastUpdateEt: "3/26 16:00", checkTimeEt: "3/26 15:54", dateModified: Date(), dateChecked: Date(), notes: "Please stop using the \"total\" field. Use \"totalTestResults\" instead.", totalTestResults: 12290)

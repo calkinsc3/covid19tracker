@@ -44,10 +44,8 @@ struct StateDetailView: View {
                 Divider()
                 Text("Deaths: \(givenState.death ?? 0)")
                 Divider()
-                if givenState.state == "WI" {
-                    Text("\(givenState.wiPopulationTested ?? "") Tested")
-                    Divider()
-                }
+                Text("\(givenState.populationTested ?? "") Tested")
+                Divider()
                 
                 List(statesViewModel.stateDailyResults) { dailyResults in
                     StateDailyCell(dailyStateData: dailyResults)
