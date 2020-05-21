@@ -213,6 +213,12 @@ struct USTotal: Codable {
     let posNeg: Int
     let notes: String
     
+    static var usPopulationFormatted: String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value: USTotal.usPopulation)) ?? ""
+    }
+    
     var formattedPositive: String? {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal

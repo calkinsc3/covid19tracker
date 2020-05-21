@@ -13,10 +13,10 @@ struct PopulationView: View {
         VStack {
             Text("Population Reference").font(.title)
             
-            Text("US Population: \(USTotal.usPopulation)")
+            Text("US Population: \(USTotal.usPopulationFormatted)")
             Divider()
             List(statePopulations) { state in
-                Text("\(state.state): \(state.formattedPopulation)")
+                Text("\(state.longStateName ?? state.state): \(state.formattedPopulation)")
             }
         }
     }

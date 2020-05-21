@@ -95,8 +95,12 @@ struct StatePopulation: Identifiable, Hashable, Equatable, Codable {
         numberFormatter.numberStyle = .decimal
         return numberFormatter.string(from: NSNumber(value: self.population)) ?? ""
     }
+    
+    var longStateName: String? {
+        return unitedStates[self.state]
+    }
 }
-
+//Derived: https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States_by_population
 let statePopulations = [
     StatePopulation(state: "AL", population: 4903185),
     StatePopulation(state: "AK", population: 731545),
@@ -105,7 +109,7 @@ let statePopulations = [
     StatePopulation(state: "CA", population: 39512223),
     StatePopulation(state: "CO", population: 5758736),
     StatePopulation(state: "CT", population: 3565287),
-    StatePopulation(state: "DL", population: 973764),
+    StatePopulation(state: "DE", population: 973764),
     StatePopulation(state: "DC", population: 705749),
     StatePopulation(state: "FL", population: 21477737),
     StatePopulation(state: "GA", population: 10617423),
@@ -145,7 +149,6 @@ let statePopulations = [
     StatePopulation(state: "TX", population: 28995881),
     StatePopulation(state: "UT", population: 3205958),
     StatePopulation(state: "VT", population: 623989),
-    StatePopulation(state: "AR", population: 3017825),
     StatePopulation(state: "VA", population: 8535519),
     StatePopulation(state: "WA", population: 7614893),
     StatePopulation(state: "WV", population: 1792147),
