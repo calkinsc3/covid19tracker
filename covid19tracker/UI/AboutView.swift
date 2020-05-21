@@ -11,6 +11,7 @@ import SwiftUI
 struct AboutView: View {
     
     @State private var showingCOVIDProject = false
+    @State private var showingStatePopulations = false
     
     var body: some View {
         VStack {
@@ -26,6 +27,12 @@ struct AboutView: View {
                 Text("The COVID Tracking Project")
                     .font(.subheadline)
             }
+            Button(action: {
+                self.showingStatePopulations.toggle()
+            }) {
+                Text("Population References used to calculate percentage tested")
+                    .font(.subheadline)
+            }
             
             Text("The app is meant to inform the user.")
             Text("The data provided in not diagnostic.")
@@ -37,6 +44,9 @@ struct AboutView: View {
         .sheet(isPresented: $showingCOVIDProject, content: {
             StateWebController(urlRequest: URLRequest(url: URL(string: "https://covidtracking.com")!, cachePolicy: .returnCacheDataElseLoad))
         })
+        .sheet(isPresented: $showingStatePopulations) {
+                PopulationView()
+        }
     }
 }
 
