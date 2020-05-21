@@ -15,6 +15,7 @@ struct USState {
     let abbreviation : String
     let longName : String
     var isFavorite = false
+    
 }
 
 let unitedStates = [
@@ -88,6 +89,12 @@ struct StatePopulation: Identifiable, Hashable, Equatable, Codable {
     let id = UUID()
     let state: String
     let population: Double
+    
+    var formattedPopulation: String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value: self.population)) ?? ""
+    }
 }
 
 let statePopulations = [

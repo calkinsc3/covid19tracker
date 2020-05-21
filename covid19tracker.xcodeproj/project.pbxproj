@@ -42,6 +42,7 @@
 		FA1F78C5243A394600FFC39F /* USTotals.json in Resources */ = {isa = PBXBuildFile; fileRef = FA1F78C4243A394600FFC39F /* USTotals.json */; };
 		FA78982D244B664C0060993E /* ErrorLog.json in Resources */ = {isa = PBXBuildFile; fileRef = FA78982C244B664C0060993E /* ErrorLog.json */; };
 		FAD586D4243A889200718C56 /* USInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD586D3243A889200718C56 /* USInfoViewModel.swift */; };
+		FAE84F4F24761E25002DEE7B /* PopulationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE84F4E24761E25002DEE7B /* PopulationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		FA1F78C4243A394600FFC39F /* USTotals.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = USTotals.json; sourceTree = "<group>"; };
 		FA78982C244B664C0060993E /* ErrorLog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ErrorLog.json; sourceTree = "<group>"; };
 		FAD586D3243A889200718C56 /* USInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USInfoViewModel.swift; sourceTree = "<group>"; };
+		FAE84F4E24761E25002DEE7B /* PopulationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				947D2001243AC0A700F878A8 /* USTotalsView.swift */,
 				94F64883244C8804002C8284 /* AboutView.swift */,
 				94F64885244F89AA002C8284 /* BarView.swift */,
+				FAE84F4E24761E25002DEE7B /* PopulationView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				94F64884244C8804002C8284 /* AboutView.swift in Sources */,
 				9442AFD8242F8262008E2602 /* StateDetailView.swift in Sources */,
 				94EF62AB242E5F43006BFB4F /* Models.swift in Sources */,
+				FAE84F4F24761E25002DEE7B /* PopulationView.swift in Sources */,
 				9442AFE62430D870008E2602 /* StateWebController.swift in Sources */,
 				FAD586D4243A889200718C56 /* USInfoViewModel.swift in Sources */,
 				94EF6288242E5251006BFB4F /* ContentView.swift in Sources */,
