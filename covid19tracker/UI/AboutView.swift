@@ -14,39 +14,31 @@ struct AboutView: View {
     @State private var showingStatePopulations = false
     
     var body: some View {
-        VStack {
-            
-            Image("COVIDIcon")
-                .resizable()
-                .frame(width: 150, height: 150, alignment: .center)
-            Text("Data for this app is provided by: ")
-                .font(.caption)
-            Button(action: {
-                self.showingCOVIDProject.toggle()
-            }) {
-                Text("The COVID Tracking Project")
-                    .font(.subheadline)
+        
+        NavigationView {
+            VStack {
+                
+                Image("COVIDIcon")
+                    .resizable()
+                    .frame(width: 150, height: 150, alignment: .center)
+                
+                
+                NavigationLink(destination: StateWebController(urlRequest: URLRequest(url: URL(string: "https://covidtracking.com")!, cachePolicy: .returnCacheDataElseLoad)), isActive: $showingCOVIDProject) {
+                    Text("Data for this app is provided by COVID Tracking Project")
+                        .font(.caption)
+                }
+                Text("The app is meant to inform the user.")
+                Text("The data provided in not diagnostic.")
+                Text("Stay safe and be healthy.")
+                NavigationLink(destination: PopulationView(), isActive: $showingStatePopulations) {
+                    Text("Population References used to calculate percentage tested")
+                        .font(.caption)
+                }
+                
             }
-            Button(action: {
-                self.showingStatePopulations.toggle()
-            }) {
-                Text("Population References used to calculate percentage tested")
-                    .font(.subheadline)
-            }
-            
-            Text("The app is meant to inform the user.")
-            Text("The data provided in not diagnostic.")
-            Text("Stay safe and be healthy.")
-            
         }
         .font(.body)
         .padding()
-        .sheet(isPresented: $showingCOVIDProject, content: {
-            StateWebController(urlRequest: URLRequest(url: URL(string: "https://covidtracking.com")!, cachePolicy: .returnCacheDataElseLoad))
-        })
-        .sheet(isPresented: $showingStatePopulations) {
-                PopulationView()
-        }
     }
 }
 

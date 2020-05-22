@@ -156,3 +156,6 @@ let statePopulations = [
     StatePopulation(state: "WY", population: 578759)
 ]
 
+class StatePopulations: ObservableObject {
+    @Published var givenStatePopulations = statePopulations
+}

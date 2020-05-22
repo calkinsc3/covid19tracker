@@ -19,6 +19,34 @@ struct StatesView: View {
     @State private var showingUSTotals = false
     @State private var showWatchedOnly = false
     
+    var body: some View {
+        
+        NavigationView {
+            VStack(alignment: .center) {
+                Divider()
+                
+                List(self.statesViewModel.stateResults) { state in
+                    NavigationLink(destination: StateDetailView(givenState: state)) {
+                        StateCellView(state: state).environmentObject(self.userData)
+                    }
+                }
+            }
+            .navigationBarTitle("States")
+            .navigationBarItems(leading: self.usTotalsSheetButton, trailing: self.sortActionSheetButton)
+            .actionSheet(isPresented: $showingSortSheet) {
+                self.sortingActionSheet
+            }
+            .sheet(isPresented: $showingUSTotals, content: {
+                USTotalsView (onDismiss: ({
+                    self.showingUSTotals = false
+                }))
+            })
+        }
+    }
+}
+
+private extension StatesView {
+    
     var sortingActionSheet: ActionSheet {
         ActionSheet(title: Text("Sort By"),
                     message: Text("How would you like to sort the States?"), buttons: [
@@ -60,32 +88,6 @@ struct StatesView: View {
         }
     }
     
-    var body: some View {
-        
-        NavigationView {
-            
-            VStack(alignment: .center) {
-                Divider()
-                
-                List(self.statesViewModel.stateResults) { state in
-                    NavigationLink(destination: StateDetailView(givenState: state)) {
-                        StateCellView(state: state).environmentObject(self.userData)
-                    }
-                }
-                
-            }
-            .navigationBarTitle("States")
-            .navigationBarItems(leading: self.usTotalsSheetButton, trailing: self.sortActionSheetButton)
-            .actionSheet(isPresented: $showingSortSheet) {
-                self.sortingActionSheet
-            }
-            .sheet(isPresented: $showingUSTotals, content: {
-                USTotalsView (onDismiss: ({
-                    self.showingUSTotals = false
-                }))
-            })
-        }
-    }
 }
 
 struct StateCellView: View {
