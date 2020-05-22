@@ -19,7 +19,7 @@ struct PopulationView: View {
         VStack {
             Text("US Population: \(USTotal.usPopulationFormatted)")
             Divider()
-            List(statePopulations) { state in
+            List(self.statePopulatioModel.givenStatePopulations) { state in
                 Text("\(state.longStateName ?? state.state): \(state.formattedPopulation)")
             }
         }
@@ -42,12 +42,13 @@ private extension PopulationView {
             .default(Text("Smallest Population"), action: {
                 self.statePopulatioModel.givenStatePopulations = self.statePopulatioModel.givenStatePopulations.sorted(by: {$0.population < $1.population})
             }),
+            .default(Text("Alphabetically Asc"), action: {
+                self.statePopulatioModel.givenStatePopulations = self.statePopulatioModel.givenStatePopulations.sorted(by: {$0.longStateName ?? "" < $1.longStateName ?? ""})
+            }),
             .default(Text("Alphabetically Desc"), action: {
                 self.statePopulatioModel.givenStatePopulations = self.statePopulatioModel.givenStatePopulations.sorted(by: {$0.longStateName ?? "" > $1.longStateName ?? ""})
             }),
-            .default(Text("Alphabetically Asc"), action: {
-                self.statePopulatioModel.givenStatePopulations = self.statePopulatioModel.givenStatePopulations.sorted(by: {$0.longStateName ?? "" > $1.longStateName ?? ""})
-            }),
+            
             .cancel(Text("Cancel"))
         ])
     }
