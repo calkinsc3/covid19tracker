@@ -21,6 +21,7 @@ struct PopulationView: View {
             Divider()
             List(self.statePopulatioModel.givenStatePopulations) { state in
                 Text("\(state.longStateName ?? state.state): \(state.formattedPopulation)")
+                    .font(.body)
             }
         }
         .navigationBarTitle("Populations")
