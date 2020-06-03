@@ -36,13 +36,13 @@ struct StateDetailView: View {
                     
                     VStack {
                         Text("Negative: \(givenState.negative ?? 0)")
-                        Text("Positive: \(givenState.positive ?? 0)")
+                        Text("Positive: \(givenState.positive )")
                         Text("Total: \(givenState.totalTestResults)")
                         
                     }
                 }
                 Divider()
-                Text("Deaths: \(givenState.death ?? 0)")
+                Text("Deaths: \(givenState.death )")
                 Divider()
                 Text("\(givenState.populationTested ?? "") Tested")
                 Divider()

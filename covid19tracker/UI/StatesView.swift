@@ -51,13 +51,13 @@ private extension StatesView {
         ActionSheet(title: Text("Sort By"),
                     message: Text("How would you like to sort the States?"), buttons: [
                         .default(Text("Most Recent"), action: {
-                            self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.dateModified ?? Date() > $1.dateModified ?? Date()})
+                            self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.dateModified > $1.dateModified })
                         }),
                         .default(Text("Positive Tests"), action: {
-                            self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.positive ?? 0 > $1.positive ?? 0})
+                            self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.positive > $1.positive})
                         }),
                         .default(Text("Deaths"), action: {
-                            self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.death ?? 0 > $1.death ?? 0})
+                            self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.death > $1.death})
                         }),
                         .default(Text("Alphabetically Asc"), action: {
                             self.statesViewModel.stateResults = self.statesViewModel.stateResults.sorted(by: {$0.stateName ?? "" < $1.stateName ?? ""})

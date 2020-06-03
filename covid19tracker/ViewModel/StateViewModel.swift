@@ -51,7 +51,7 @@ class StatesViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] stateModels in
                 guard let self = self else { return }
-                self.stateResults = stateModels.sorted(by:{$0.positive ?? 0 > $1.positive ?? 0})
+                self.stateResults = stateModels.sorted(by:{$0.positive  > $1.positive})
             })
             .store(in: &disposable)
         
@@ -79,7 +79,7 @@ class StatesViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] stateDailyModels in
                 guard let self = self else { return }
-                let sortedDailyModels = stateDailyModels.sorted(by:{$0.dateChecked > $1.dateChecked})
+                let sortedDailyModels = stateDailyModels.sorted(by:{$0.dateChecked ?? Date() > $1.dateChecked ?? Date()})
                 self.stateDailyResults = sortedDailyModels
                 
                 //gather number for graph results
