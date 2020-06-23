@@ -150,7 +150,7 @@ private extension StateItemsFetcher {
         
         components.scheme = COVID19_API.schema
         components.host = COVID19_API.host
-        components.path = "\(COVID19_API.statesBasePath)/\(state)/daily.json"
+        components.path = "\(COVID19_API.statesBasePath)/\(state.lowercased())/daily.json"
         
         return components
     }

@@ -12,9 +12,7 @@ import os
 struct StateDetailView: View {
     
     @EnvironmentObject var userData: UserData
-    
     @ObservedObject var statesViewModel = StatesViewModel()
-    
     @State private var showingBarGraph = false
     
     var givenState: StateData

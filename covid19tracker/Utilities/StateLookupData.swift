@@ -14,7 +14,7 @@ let stateLookupData: [USState] = loadStates()
 struct USState {
     let abbreviation : String
     let longName : String
-    var isFavorite = false
+    let isFavorite = false
     
 }
 
@@ -87,6 +87,8 @@ func loadStates() -> [USState] {
 
 struct StatePopulation: Identifiable, Hashable, Equatable, Codable {
     let id = UUID()
+    
+    //var id = UUID()
     let state: String
     let population: Double
     
