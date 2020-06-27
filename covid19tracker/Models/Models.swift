@@ -12,7 +12,8 @@ import Combine
 typealias StateModels = [StateData]
 
 // MARK: - StateDatum
-struct StateData: Codable, Identifiable {
+struct StateData: Decodable, Identifiable {
+   
     let id = UUID()
     let isFavorite = false
     let date: Int

@@ -12,8 +12,8 @@ struct StatesView: View {
     
     @EnvironmentObject var userData: UserData
     
-    @ObservedObject var statesViewModel = StatesViewModel()
-    @ObservedObject var usInfoViewModel = USInfoViewModel()
+    @StateObject var statesViewModel = StatesViewModel()
+    @StateObject var usInfoViewModel = USInfoViewModel()
     
     @State private var showingSortSheet = false
     @State private var showingUSTotals = false
