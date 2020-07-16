@@ -72,22 +72,16 @@ struct StateDailyCell: View {
             Text("Date: \(dailyStateData.dateCheckedDisplay ?? "Unknown")")
             HStack {
                 VStack (alignment: .leading) {
-                    Text("Increases")
+                    Text("Positive")
                         .font(.headline)
-                    if dailyStateData.hospitalized ?? 0 != 0 {
-                        Text("Hospitalized: \(dailyStateData.hospitalizedIncrease ?? 0)")
-                    }
-                    Text("Deaths: \(dailyStateData.deathIncrease ?? 0)")
+                    Text("\(dailyStateData.positive)")
                 }
                 .font(.subheadline)
                 
                 VStack (alignment: .leading) {
-                    Text("Hospitals")
+                    Text("Negative")
                         .font(.headline)
-                    if dailyStateData.hospitalized ?? 0 != 0 {
-                        Text("Current: \(dailyStateData.hospitalizedCurrently ?? 0)")
-                    }
-                    Text("In ICU: \(dailyStateData.inIcuCurrently ?? 0)")
+                    Text("\(dailyStateData.negative ?? 0)")
                 }
                 .font(.subheadline)
             }

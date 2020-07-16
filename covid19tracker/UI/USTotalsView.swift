@@ -32,7 +32,7 @@ struct USTotalsView: View {
                 self.doneButton
             }
             .padding()
-            VStack {
+            VStack() {
                 Text("US Totals").font(.largeTitle)
                 Divider()
                 Text("Last Modified: \(usInfoViewModel.usInfoResult?.datePublishedDisplay ?? "today")")
@@ -49,6 +49,7 @@ struct USTotalsView: View {
                     Text("\(usInfoViewModel.usInfoResult?.totalUSPercentage ?? "0") Tested")
                 }
             }
+            Spacer()
         }
         .font(.title)
     }
